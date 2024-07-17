@@ -1,0 +1,57 @@
+/* src/JoinQueue.css */
+
+.join-queue-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.join-queue-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-field {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.join-button {
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.join-button:hover {
+  background-color: #0056b3;
+}
+
+.notification {
+  font-size: 16px;
+  color: #28a745;
+}
+
+.turn-notification {
+  padding: 20px;
+  border: 2px solid #28a745;
+  border-radius: 8px;
+  background-color: #e6ffe6;
+  margin-top: 20px;
+}
+
+.turn-notification h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  color: #28a745;
+}
