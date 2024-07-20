@@ -1,47 +1,25 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import JoinQueue from './Pages/Queue/JoinQueue';
-import Dashboard from './Pages/Dashboard/Dashboard';
+import { Route, Routes } from 'react-router-dom';
+// import HomePage from './Pages/Home/HomePage';
 import QueueView from './Pages/Queue/QueueView';
-import Notification from './Components/Notification/Notification';
-
 import Navbar from './Components/common/Nav/Navbar';
 
 import './App.css'; // Create a CSS file for styling
+import LoginPage from './Pages/Login/LoginPage';
+import ContactPage from './Pages/Contact/ContactPage';
+import LandingPage from './Pages/Home/LandingPage';
 
 const App = () => {
-  const [userId, setUserId] = useState(() => {
-    let storedUserId = localStorage.getItem('userId');
-    if (!storedUserId) {
-      storedUserId = `user-${Math.random().toString(36).substr(2, 9)}`;
-      localStorage.setItem('userId', storedUserId);
-    }
-    return storedUserId;
-  });
-
-  
-
-  const handleHostButtonClick = () => {
-    setShowPasswordInput(true);
-  };
-
-  const handlePasswordSubmit = (e) => {
-    e.preventDefault();
-    if (password === correctPassword) {
-      setIsHost(true);
-    } else {
-      alert('Incorrect password. Please try again.');
-    }
-  };
 
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
+    <>    
+      <Navbar />
         <Routes>
-          <Route path="/" index element={HomePage} />
+          <Route path="/" index element={<LandingPage/>} />
           <Route path="/queue-view" element={<QueueView />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           {/* <Route path="/queue/:queueId" exact component={AdminPage} /> */}
           {/* <Route path="/j/:queueName" exact component={JoinQueueWithDetails} /> */}
           {/* <Route path="/token/:tokenId" exact component={TokenStatusPage} /> */}
@@ -50,7 +28,6 @@ const App = () => {
           {/* <Route path="/pageNotFound/queueName=:queueName" exact component={PageNotFound} /> */}
           {/* <Route component={PageNotFound} /> */}
         </Routes>
-      </BrowserRouter>
       {/* <PopupNotifications /> */}
     </>
   )

@@ -1,5 +1,5 @@
 import React from 'react';
-import StandardButton from 'components/common/Button';
+import StandardButton from '../../Components/common/Button';
 import { smoothScrollToHomePageTop } from 'utils/scrollingOperations';
 import styles from './Home.module.scss';
 

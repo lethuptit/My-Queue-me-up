@@ -10,14 +10,24 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDEqqPenrBzLDUTQDTojIpu7-TnTQhBJRw",
+//   authDomain: "queue-app-421da.firebaseapp.com",
+//   projectId: "queue-app-421da",
+//   storageBucket: "queue-app-421da.appspot.com",
+//   messagingSenderId: "447460227986",
+//   appId: "1:447460227986:web:e0ed235bc66d518a94df4b",
+//   measurementId: "G-DQ985FKZBK"
+// };
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDEqqPenrBzLDUTQDTojIpu7-TnTQhBJRw",
-  authDomain: "queue-app-421da.firebaseapp.com",
-  projectId: "queue-app-421da",
-  storageBucket: "queue-app-421da.appspot.com",
-  messagingSenderId: "447460227986",
-  appId: "1:447460227986:web:e0ed235bc66d518a94df4b",
-  measurementId: "G-DQ985FKZBK"
+  apiKey: "AIzaSyB5A9B03OZuMz88-BICfXF9xYGCdN16BnA",
+  authDomain: "realtimedb-24c2e.firebaseapp.com",
+  databaseURL: "https://realtimedb-24c2e-default-rtdb.firebaseio.com",
+  projectId: "realtimedb-24c2e",
+  storageBucket: "realtimedb-24c2e.appspot.com",
+  messagingSenderId: "523063178950",
+  appId: "1:523063178950:web:f45deb86ba5dee6d63c9c7",
 };
 
 // Initialize Firebase

@@ -1,65 +1,54 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { smoothScrollTo, smoothScrollToHomePageTop, onLoadById } from '../../../utils/scrollingOperations';
-import { useHistory } from 'react-router';
+// import { useNavigate } from 'react-router';
 // import { ReactTypeformEmbed } from 'react-typeform-embed';
 import styles from './Nav.module.scss';
 import LoginButton from '../LoginButton';
 
 const LeftNav = ({ open, toggleClose }) => {
-  const history = useHistory();
+  // const navigate = useNavigate();
   let typeformEmbed = null;
 
-  const scrollToHowItWorks = () => {
-    // Close the navbar on click
-    toggleClose();
-    // get the target div by ID
-    const element = document.getElementById('target_how_it_works');
-    if (element) {
-      // element is on the current page, just have to scroll to it
-      smoothScrollTo(element);
-    } else {
-      history.push('/');
-      // wait till page loads before getting element
-      onLoadById('target_how_it_works', smoothScrollTo);
-    }
-  };
+  // const scrollToHowItWorks = () => {
+  //   // Close the navbar on click
+  //   toggleClose();
+  //   // get the target div by ID
+  //   const element = document.getElementById('target_how_it_works');
+  //   if (element) {
+  //     // element is on the current page, just have to scroll to it
+  //     smoothScrollTo(element);
+  //   } else {
+  //     navigate('/');
+  //     // wait till page loads before getting element
+  //     onLoadById('target_how_it_works', smoothScrollTo);
+  //   }
+  // };
 
-  const openContactUs = () => {
-    typeformEmbed.typeform.open();
-  };
+  // const openContactUs = () => {
+  //   typeformEmbed.typeform.open();
+  // };
+
   return (
     <div>
       <ul className={styles['left-nav']} open={open}>
         <li>
-          <a
-            role="link"
-            tabIndex={0}
-            onKeyDown={() => smoothScrollToHomePageTop(history)}
-            onClick={() => smoothScrollToHomePageTop(history)}
-          >
+          <Link to="/">
             Home
-          </a>
+          </Link>
         </li>
+        <li><Link to="/queue-view">Queue View</Link></li>
         <li>
-          <a role="link" tabIndex={0} onKeyDown={scrollToHowItWorks} onClick={scrollToHowItWorks}>
-            How it Works
-          </a>
-        </li>
-        <li>
-          <a
-            className={styles['contact-us']}
-            role="link"
-            tabIndex={0}
-            onKeyDown={openContactUs}
-            onClick={openContactUs}
-          >
+          <Link to="/contact">
             Contact Us
-          </a>
+          </Link>
         </li>
         <li>
-          <LoginButton />
+          <Link to="/login">
+            <LoginButton />
+          </Link>
         </li>
       </ul>
       {/* <ReactTypeformEmbed

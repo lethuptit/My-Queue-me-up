@@ -1,16 +1,16 @@
 import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import Header from 'components/common/Header';
-import QueueForm from 'components/common/CreateJoinForm';
+// import { useAuth0 } from '@auth0/auth0-react';
+import Header from '../../Components/common/Header';
+// import QueueForm from 'components/common/CreateJoinForm';
 import styles from './Home.module.scss';
 import MyQueues from './MyQueues';
 
-export default () => {
+function LandingPage(){
   let subtitle = 'Give Your Customers a Delightful Waiting Experience.';
-  const { user, isAuthenticated } = useAuth0();
-  if (isAuthenticated) {
-    subtitle = `Hi ${user.name}, welcome back!`;
-  }
+  // const { user, isAuthenticated } = useAuth0();
+  // if (isAuthenticated) {
+  //   subtitle = `Hi ${user.name}, welcome back!`;
+  // }
 
   return (
     <div id="target_top" className={styles['landing-page']}>
@@ -34,3 +34,6 @@ export default () => {
     </div>
   );
 };
+
+
+export default LandingPage;

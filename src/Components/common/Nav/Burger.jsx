@@ -10,12 +10,12 @@ const Burger = () => {
 
   return (
     <>
-      <div className={styles['left-nav-overlay']} open={open} onClick={toggleClose} />
+      {/* <div className={styles['left-nav-overlay']} open={open} onClick={toggleClose} />
       <div className={styles['burger']} open={open} onClick={toggleClose}>
         <div open={open} onClick={toggleClose} />
         <div open={open} onClick={toggleClose} />
         <div open={open} onClick={toggleClose} />
-      </div>
+      </div> */}
       <LeftNav open={open} toggleClose={toggleClose} />
     </>
   );

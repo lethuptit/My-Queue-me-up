@@ -5,15 +5,20 @@ import { useNavigate } from 'react-router';
 import { smoothScrollToHomePageTop } from '../../../utils/scrollingOperations';
 import styles from './ClickableLogo.module.scss';
 
-export default (props) => {
+function ClickableLogo(props)  {
   const navigate = useNavigate();
   const defaultOnClick = () => {
      smoothScrollToHomePageTop(navigate);
   };
   return (
-    <div className={styles['logo']} onClick={props.onClick ? props.onClick : defaultOnClick}>
-      <img src="/images/Simple-Q.png" alt="Home" />
-      <p>SimplQ</p>
+    <div className={styles['logo']} 
+    // onClick={props.onClick ? props.onClick : defaultOnClick}
+    >
+      <img src="/images/Logo-1.jpg" alt="Home" />
+      {/* <p>SimplQ</p> */}
     </div>
   );
 };
+
+
+export default ClickableLogo ;
