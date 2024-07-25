@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
-
+import { getMessaging } from "firebase/messaging";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -27,11 +27,13 @@ const firebaseConfig = {
   projectId: "realtimedb-24c2e",
   storageBucket: "realtimedb-24c2e.appspot.com",
   messagingSenderId: "523063178950",
-  appId: "1:523063178950:web:f45deb86ba5dee6d63c9c7",
+  appId: "1:523063178950:web:0056e8c8188010e563c9c7",
+  measurementId: "G-WB057J0Z5Q"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 export const db = getDatabase(app);
-export const auth = getAuth(app);
+export const auth = getAuth(app);// Messaging service
+export const messaging = getMessaging(app);

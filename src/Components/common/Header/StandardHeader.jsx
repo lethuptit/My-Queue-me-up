@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from './Header.module.scss';
+import LeftNav from '../Nav/Navbar';
 
-const StandardHeader = (props) => (
-  <h1 className={props.className ? props.className : styles.header}>{props.children}</h1>
+const Header = (props) => (
+  <>
+    <h1 className={props.className ? props.className : styles.header}>{props.children}</h1>
+    <LeftNav />
+  </>
 );
 
-export default StandardHeader;
+export default Header;

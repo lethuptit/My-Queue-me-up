@@ -1,0 +1,41 @@
+/* @import '~bootstrap/scss/bootstrap'; */
+
+.header {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 20px 0;
+  transition: all 0.5s;
+  z-index: 997;
+  margin: 0 30px;
+  /* display: flex; */
+  /* justify-content: space-between; */
+}
+
+
+.header .btn-getstarted,
+.header .btn-getstarted:focus {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  font-size: 15px;
+  padding: 8px 25px;
+  margin: 0 0 0 30px;
+  border-radius: 4px;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.header .btn-getstarted:hover,
+.header .btn-getstarted:focus:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+#basic-navbar-nav{
+  padding-left: 50px;
+}
+
+#btn-stack{
+  padding-right: 0;
+  position: absolute; 
+  right: 0px
+}
+

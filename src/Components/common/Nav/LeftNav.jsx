@@ -5,10 +5,24 @@ import { Link } from 'react-router-dom';
 import { smoothScrollTo, smoothScrollToHomePageTop, onLoadById } from '../../../utils/scrollingOperations';
 // import { useNavigate } from 'react-router';
 // import { ReactTypeformEmbed } from 'react-typeform-embed';
+
+import { Avatar, Button } from '@material-ui/core';
+import Stack from '@mui/material/Stack';
+import SvgIcon from '@mui/material/SvgIcon';
+import SendIcon from '@mui/icons-material/Send';
 import styles from './Nav.module.scss';
 import LoginButton from '../LoginButton';
 
+function HomeIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
+
 const LeftNav = ({ open, toggleClose }) => {
+
   // const navigate = useNavigate();
   let typeformEmbed = null;
 
@@ -36,19 +50,27 @@ const LeftNav = ({ open, toggleClose }) => {
       <ul className={styles['left-nav']} open={open}>
         <li>
           <Link to="/">
-            Home
+          <Button variant='text' startIcon={<HomeIcon color='Primary' />}>Home</Button>
           </Link>
         </li>
-        <li><Link to="/queue-view">Queue View</Link></li>
+        <li><Link to="/how-it-works">How it works</Link></li>
         <li>
           <Link to="/contact">
             Contact Us
           </Link>
         </li>
+        
         <li>
+          <Stack direction="row" spacing={2}>
           <Link to="/login">
-            <LoginButton />
+            <LoginButton/>
           </Link>
+          <Link to='/guest'>
+            <Button variant="contained" endIcon={<SendIcon />}>
+              Guest
+            </Button>
+            </Link>
+          </Stack>
         </li>
       </ul>
       {/* <ReactTypeformEmbed

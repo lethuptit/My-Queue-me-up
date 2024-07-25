@@ -1,109 +1,81 @@
 import React from 'react';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import MailIcon from '@material-ui/icons/Mail';
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import styles from './Footer.module.scss';
+import "bootstrap-icons/font/bootstrap-icons.css";
 import ClickableLogo from '../ClickableLogo';
-import StandardButton from '../Button';
 
 const dayOfWeek = () =>
   typeof Intl === 'object' && typeof Intl.DateTimeFormat === 'function'
     ? new Intl.DateTimeFormat('default', { weekday: 'long' }).format(new Date())
     : 'day';
 
-export default () => (
-  <div id="target_contact_us" className={styles['footer']}>
-    <div className={styles['card']}>
-      <ClickableLogo />
-      <div className={styles['card-body']}>
-        <div className={styles['description-content-container']}>
-          <b>
-            SimplQ is a free queue management system that anyone can use to create
-            instant online queues. Our queue management app is open source and 
-            aims to make crowd maangement easy for businesses and personal use.
-            <br />
-            <br />
-            <a href="/privacy">Privacy Policy</a>
-            <br />
-            <a href="/privacy#terms-of-service">Terms of Service</a>
-            <br />
-            <br />
-            <i>{`Enjoy the rest of your ${dayOfWeek()}!`}</i>
-          </b>
-        </div>
-      </div>
-    </div>
+function Footer() {
+  const Logo = () =>
+    (<svg width="112px" height="55px" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+            <g id="Artboard-1" fill="#6C63FF29"  fillOpacity="1">
+            <path d="M0,224L80,192C160,160,320,96,480,101.3C640,107,800,181,960,181.3C1120,181,1280,107,1360,69.3L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"/>
+            </g>
+        </g>
+    </svg>);
 
-    <div className={styles['card']}>
-      <h1>
-        Open source
-        <br />
-        <a
-          className="github-button"
-          href="https://github.com/simplQ/simplQ-frontend"
-          data-color-scheme="no-preference: light; light: light; dark: dark;"
-          data-show-count="true"
-          aria-label="Star simplQ/simplQ-frontend on GitHub"
-        >
-          Star
-        </a>
-      </h1>
-      <div className={styles['card-body']}>
-        <div className={styles['open-source-content-container']}>
-          <p>
-            <b>
-              <span>SimplQ </span>
-              is open source. Be part of the
-              <span> SimplQ </span>
-              community.
-            </b>
-          </p>
+  return (
+    <footer id="footer" className={styles['footer']}>
+      <Container fluid='true' className={styles['footer']}>
+        <Row gy={4}>
+          <Col lg={4} md={6}className={styles['footer-about']}>
+            <a href="index.html" className="d-flex align-items-center">
+              <span className="sitename">Queue Me Up</span>
+            </a>
+            <div pt={3} className={styles["footer-contact"]}>
+              <p>Capstone Project - Woman In Tech Course</p>
+              <p>Making Changes Association</p>
+              <p mt={3}><strong>Phone:</strong> <span>+1 234 567 8910</span></p>
+              <p><strong>Email:</strong> <span>info@example.com</span></p>
+            </div>
+            <br/>
+            <i>{`💕 Enjoy the rest of your ${dayOfWeek()}!`}</i>
+          </Col>
 
-          <StandardButton
-            icon={<GitHubIcon />}
-            onClick={() => {
-              window.location.href = 'https://github.com/SimplQ/simplQ-frontend';
-            }}
-          >
-            Contribute on Github
-          </StandardButton>
-        </div>
-      </div>
-    </div>
+          <Col lg={3} md={3} className={`${styles["footer-links"]}`}>
+            <h4>Useful Techs</h4>
+            <ul>
+              <li><i className="bi bi-chevron-right"></i> <a href="#">React bootstrap</a></li>
+              <li><i className="bi bi-chevron-right"></i> <a href="#">@material-ui</a></li>
+              <li><i className="bi bi-chevron-right"></i> <a href="#">Firebase</a></li>
+              <li><i className="bi bi-chevron-right"></i> <a href="#">Chartjs</a></li>
+            </ul>
+          </Col>
 
-    <div className={styles['card']}>
-      <h1>Keep in touch</h1>
-      <div className={styles['card-body']}>
-        <div className={styles['list-container']}>
-          <div className={styles['list-container-item']}>
-            <a href="https://github.com/SimplQ/simplQ-frontend">
-              <GitHubIcon fontSize="large" />
-            </a>
-          </div>
-          <div className={styles['list-container-item']}>
-            <a href="https://medium.com/@raimazach/virtualizing-queues-a-long-overdue-alternative-to-physical-queues-bfdc4b51070f">
-              <img alt="medium-link" src="/images/ICON-MEDIUM.svg" />
-            </a>
-          </div>
-          <div className={styles['list-container-item']}>
-            <a href="https://www.youtube.com/channel/UCAb9PSXvrGZ4vvSneK1Nrow">
-              {/* Youtube Icon was looking smaller that others, setting height/width manually via css to match other icons */}
-              <YouTubeIcon className={styles['youtube-icon']} fontSize="large" />
-            </a>
-          </div>
-          <div className={styles['list-container-item']}>
-            <a href="https://www.facebook.com/simplq/">
-              <FacebookIcon fontSize="large" />
-            </a>
-          </div>
-          <div className={styles['list-container-item']}>
-            <a href="mailto:contact@simplq.me">
-              <MailIcon fontSize="large" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+          <Col lg={3} md={3} className={styles["footer-links"]}>
+            <h4>Our Services</h4>
+            <ul>
+              <li><i className="bi bi-chevron-right"></i> <a href="#">Manage Queue</a></li>
+              <li><i className="bi bi-chevron-right"></i> <a href="#">Queueing</a></li>
+            </ul>
+          </Col>
+
+          <Col lg={2} md={12}>
+            <h4>Follow Us</h4>
+            <div className={`${styles["social-links"]}  d-flex`}>
+              <a href=""><i className="bi bi-twitter-x"></i></a>
+              <a href=""><i className="bi bi-facebook"></i></a>
+              <a href=""><i className="bi bi-instagram"></i></a>
+              <a href=""><i className="bi bi-linkedin"></i></a>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+
+      <Container mt={2} className={`${styles['copyright']} text-center`}>
+        <p m='auto'>© <span>Copyright</span> <strong>💙 Queu Me Up Team 💙</strong> <span> © 2024 </span></p>
+      </Container>
+    </footer>
+  );
+}
+
+export default Footer;
