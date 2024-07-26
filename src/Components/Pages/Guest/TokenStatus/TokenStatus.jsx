@@ -3,10 +3,10 @@ import React from 'react';
 // import { useGetToken } from 'store/asyncActions';
 // import { selectToken } from 'store/token';
 // import { selectQueueInfo } from 'store/queueInfo';
-import Loading from '../../common/Loading/Loading';
-import Button from '../../common/Button';
+import Loading from '../../../common/Loading/Loading';
+import Button from '../../../common/Button';
 import styles from './status.module.scss';
-import {createdToken, queueInfo} from '../../../__mocks__/data';
+import {createdToken, queueInfo} from '../../../../__mocks__/data';
 
 export default () => {
   // const token = useSelector(selectToken);

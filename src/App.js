@@ -3,22 +3,22 @@ import React, {useState, useEffect} from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppProvider } from './Context';
 
-import QueueView from './Components/Pages/Queue/QueueView';
+import QueueView from './Components/Pages/Guest/QueueView';
 import Navbar from './Components/common/Nav/Navbar';
 import JoinQueue from './Components/Pages/Join/JoinPage';
 import './App.css'; // Create a CSS file for styling
-import LoginPage from './Components/Pages/Login/LoginPage';
-import ContactPage from './Components/Pages/Contact/ContactPage';
-import LandingPage from './Components/Pages/Home/LandingPage';
-import TokenStatusPage from './Components/Pages/TokenStatus/TokenStatusPage'
+import LoginPage from './Components/Pages/LandingPage/LoginPage';
+import ContactPage from './Components/Pages/LandingPage/ContactPage';
+import LandingPage from './Components/Pages/LandingPage/LandingPage';
+import TokenStatusPage from './Components/Pages/Guest/TokenStatus/TokenStatusPage'
 import AdminPage from './Components/Pages/Admin/AdminPage';
 import QrScanner from './Components/common/QrScanner/QrScanner';
-import UserPage from './Components/Pages/Home/GuestPage'
+import UserPage from './Components/Pages/Guest/GuestPage'
 import PopupNotifications from './Components/common/Popup';
 import Footer from './Components/common/Footer/Footer'
 import Header from './Components/common/Header/StandardHeader'
 import BackToTopButton from './Components/common/TopButton/Back2TopButton';
- 
+import QueueMonitor from './Components/Pages/Home/QueueMonitor' 
 import { getToken, onMessage } from "firebase/messaging";
 import { messaging } from "./FirebaseConfig";
 
@@ -81,13 +81,14 @@ const App = () => {
       <Routes>
         <Route path="/" index element={<LandingPage />} />
         <Route path="/guest" index element={<UserPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/login" element={<LoginPage />} /> */}
+        <Route path="/login" element={<QueueMonitor />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/queue/:queueId" element={<AdminPage />} />
         <Route path="/j/:queueName" element={<JoinQueue />} />
         <Route path="/token/:tokenId" element={<TokenStatusPage />} />
         <Route path="/scanQr" element={<QrScanner />} />
-        {/* <Route path="/pageNotFound/queueName=:queueName" exact component={PageNotFound} /> */}
+        <Route path="/pageNotFound/queueName=:queueName" element={PageNotFound} />
         {/* <Route component={PageNotFound} /> */}
       </Routes>
       <Footer/>

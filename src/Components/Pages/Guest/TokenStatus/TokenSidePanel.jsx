@@ -1,6 +1,6 @@
 import React from 'react';
-import SidePanel from '../../common/SidePanel';
-import QueueDetails from '../Queue/QueueInfo';
+import SidePanel from '../../../common/SidePanel';
+import QueueDetails from '../../Queue/QueueInfo';
 import NotificationContainer from './NotificationContainer';
 
 export default () => (

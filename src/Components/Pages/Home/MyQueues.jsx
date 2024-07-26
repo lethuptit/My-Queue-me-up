@@ -7,10 +7,10 @@ import { selectQueues } from '../../../store/queues';
 // import { useDispatch, useSelector } from 'react-redux';
 import styles from './Home.module.scss';
 
-import {queues as Qs} from '../../../__mocks__/data'
+import { queues as Qs } from '../../../__mocks__/data'
 const queues = Qs.queues;
 
-function MyQueues(){
+function MyQueues() {
   const navigate = useNavigate();
   // const dispatch = useDispatch();
   // const queues = useSelector(selectQueues);
@@ -22,7 +22,7 @@ function MyQueues(){
     // dispatch(deleteQueue({ queueId: queue.queueId, goHome: false }));
   };
 
-  
+  const handler = (queueId) => navigate(`/queue/${queueId}`);
 
   return (
     <div className={styles['my-queue']}>
@@ -31,24 +31,26 @@ function MyQueues(){
           ? "Looks like you don't have any active queues. Start by creating one..."
           : 'What would you like to do today? Here are your active queues:'}
       </p>
-      {queues.map((queue) => {
-        const handler = () => navigate(`/queue/${queue.queueId}`);
-        return (
-          <div
-            key={queue.queueId}
-            tabIndex="0"
-            role="button"
-            onKeyDown={handler}
-            onClick={handler}
-            className={styles['my-queue-item']}
-          >
-            <div>{queue.queueName}</div>
-            {/* <IconButton onClick={(e) => handleDelete(e, queue)}>
+      <Form.Label htmlFor="queueName">Event</Form.Label>
+      <Form.Select id='queueName'>
+        <option disabled='true' selected>Select event name select</option>
+        {queues.map((queue) => {(
+            <div
+              key={queue.queueId}
+              tabIndex="0"
+              role="button"
+              onKeyDown={handler(queue.queueId)}
+              onClick={handler(queue.queueId)}
+              className={styles['my-queue-item']}
+            >
+              <div>{queue.queueName}</div>
+              {/* <IconButton onClick={(e) => handleDelete(e, queue)}>
               <DeleteIcon />
             </IconButton> */}
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
+      </Form.Select>
     </div>
   );
 };

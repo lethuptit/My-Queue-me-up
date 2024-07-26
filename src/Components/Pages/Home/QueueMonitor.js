@@ -1,8 +1,8 @@
 // src/Dashboard.js
 import React, { useState, useEffect } from 'react';
 import { ref, onValue, update, remove, push, get } from 'firebase/database';
-import { db } from '../../FirebaseConfig';
-import './Dashboard.css';
+import { db } from '../../../FirebaseConfig';
+import './QueueMonitor.css';
 
 const Dashboard = () => {
   const [queue, setQueue] = useState([]);
@@ -88,6 +88,8 @@ const Dashboard = () => {
   };
 
   return (
+    <>
+    <MyQueues/>
     <div className="dashboard-container">
       <h1>Queue Dashboard</h1>
       <form onSubmit={handleAddGuest} className="add-guest-form">
@@ -123,6 +125,7 @@ const Dashboard = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

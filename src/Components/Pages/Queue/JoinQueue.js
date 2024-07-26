@@ -1,7 +1,7 @@
 // src/JoinQueue.js
 import React, { useState, useEffect } from 'react';
 import { ref, push, query, orderByChild, equalTo, get, onValue } from 'firebase/database';
-import { db } from '../../../FirebaseConfig';
+import { db } from '../FirebaseConfig';
 import './JoinQueue.css';
 
 const JoinQueue = ({ userId }) => {

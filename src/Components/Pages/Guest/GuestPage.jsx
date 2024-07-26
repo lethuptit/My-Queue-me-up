@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '../../common/Header';
 import JoinForm from '../../common/CreateJoinForm';
 import styles from './GuestPage.module.scss';
-import MyQueues from './MyQueues';
+import MyQueues from '../Home/MyQueues';
 
 function UserPage(){
   let subtitle = 'Give Users a Delightful Waiting Experience!!!';

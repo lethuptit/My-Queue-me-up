@@ -17,6 +17,7 @@ import styles from './admin.module.scss';
 import SidePanel from './AdminSidePanel';
 import getToursteps from './getTourSteps';
 import  {useParams} from 'react-router';
+import QueueInfo from './QueueInfo';
 
 const TIMEOUT = 10000;
 let timeoutId;
@@ -87,6 +88,7 @@ const AdminPageView = (props) => {
         />
       )}
       <div className={styles['main-body']}>
+        <QueueInfo queueId={queueId}/>
         <TokenList queueName={queueName} queueId={queueId} />
         <SidePanel queueId={queueId} />
       </div>

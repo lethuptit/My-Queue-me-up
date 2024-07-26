@@ -22,7 +22,7 @@ const HomePage = () => {
   if (isHost)
     return <Dashboard />;
   
-  return  <JoinQueue userId={userId} />;
+  // return  <JoinQueue userId={userId} />;
 }
 
 export default HomePage;

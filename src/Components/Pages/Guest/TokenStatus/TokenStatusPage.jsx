@@ -1,4 +1,4 @@
-import HeaderSection from '../../common/HeaderSection';
+import HeaderSection from '../../../common/HeaderSection';
 import React, { useEffect, useCallback } from 'react';
 
 // import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import TokenStatus from './TokenStatus';
 import TokenSidePanel from './TokenSidePanel';
 import TokenNumber from './TokenNumber';
 import { useParams } from 'react-router';
-import {createdToken} from '../../../__mocks__/data';
+import {createdToken} from '../../../../__mocks__/data';
 
 function TokenStatusPage(props) {
   // const tokenId = props.match.params.tokenId;

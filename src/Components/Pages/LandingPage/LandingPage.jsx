@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './Home.module.scss';
 
-import ContactPage from '../Contact/ContactPage';
+import ContactPage from './ContactPage';
 import Introduction from './Introduction';
 
 function LandingPage() {

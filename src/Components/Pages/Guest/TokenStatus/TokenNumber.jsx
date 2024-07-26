@@ -1,8 +1,8 @@
-import Loading from '../../common/Loading/Loading';
+import Loading from '../../../common/Loading/Loading';
 import React from 'react';
 // import { useSelector } from 'react-redux';
 // import { selectToken } from 'store/token';
-import {createdToken, queueInfo} from '../../../__mocks__/data';
+import {createdToken, queueInfo} from '../../../../__mocks__/data';
 
 import styles from './status.module.scss';
 

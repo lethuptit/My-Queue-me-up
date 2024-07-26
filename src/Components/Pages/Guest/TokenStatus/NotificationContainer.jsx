@@ -3,8 +3,8 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Switch from '@material-ui/core/Switch';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import Checkbox from '../../common/Checkbox/Checkbox';
-import { setNotificationPreference } from '../../../services/notification';
+import Checkbox from '../../../common/Checkbox/Checkbox';
+import { setNotificationPreference } from '../../../../services/notification';
 import styles from './status.module.scss';
 
 export default () => {
