@@ -14,14 +14,13 @@
   margin-left: 0.5rem;
 }
 
-.checkbox {
+.checkbox-container {
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .checkbox-input {
-  -webkit-appearance: none;
   background-color: inherit;
   border: 0.5px solid #cacece;
   border-radius: 3px;
@@ -29,15 +28,8 @@
   margin: 0;
   padding: 10px;
   position: relative;
+   accent-color:$primary-color-dark;
 }
-
-// Using 'form-check-input' defaul class
-
-.checkbox-input:checked {
-  // background-image: url(/ball-147676_640.png);
-  background-color: $primary-color-dark;
-}
-
 
 .checkbox-input:hover {
   cursor: pointer;

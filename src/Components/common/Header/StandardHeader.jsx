@@ -3,8 +3,7 @@ import styles from './Header.module.scss';
 import LeftNav from '../Nav/Navbar';
 
 const Header = (props) => (
-  <>
-    <h1 className={props.className ? props.className : styles.header}>{props.children}</h1>
+  <>    
     <LeftNav />
   </>
 );

@@ -1,13 +1,11 @@
 import React from 'react';
 import styles from './Checkbox.module.scss';
-import Form from 'react-bootstrap/Form';
 
 const Checkbox = ({ name, type, label, checked, onChange }) => {
   return (
-    /* eslint-disable react/jsx-wrap-multilines */
-    <div className={styles['checkbox']}>
+    <div className={styles['checkbox-container']}>
         <input
-        className={`${styles['checkbox-input']} form-check-input`}
+        className={`${styles['checkbox-input']}`}
         type={type?type:"checkbox"}
         name={name}
         checked={checked}

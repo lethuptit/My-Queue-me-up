@@ -1,125 +1,85 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router';
-// import { useSelector, useDispatch } from 'react-redux';
-import { handleEnterPress } from '../../../utils/eventHandling';
-import InputField from '../../common/InputField';
+
 import PhoneInput from '../../common/PhoneInput';
 import StandardButton from '../../common/Button';
 import Form from 'react-bootstrap/Form';
 // import LoadingStatus from '../../../common/Loading';
-import Step from '@material-ui/core/Step';
-import StepContent from '@material-ui/core/StepContent';
-import Box from '@material-ui/core/Box';
-import { Stepper } from '@material-ui/core';
-import StepLabel from '@material-ui/core/StepLabel';
-import Typography from '@material-ui/core/Typography';
-// import { useJoinQueue } from 'store/asyncActions';
-// import { useGetTokenByContactNumber } from 'store/asyncActions/getTokenByContactNumber';
 import styles from './JoinForm.module.scss';
-import Row from 'react-bootstrap/esm/Row';
 
 import Checkbox from '../../common/Checkbox/Checkbox';
-// import { selectQueueInfo } from '../../../store/queueInfo';
 import { queueInfo, createdToken } from '../../../__mocks__/data';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
+import {Container} from 'react-bootstrap/esm';
 
-export function JoinQueueForm({ queueId, isAdminPage, buttonText }) {
+export function JoinQueueForm({ queueId, isAdminPage }) {
   const [name, setName] = useState('');
   const [invalidName, setInvalidName] = useState(false);
-  const [contactNumber, setContactNumber] = useState('');
-  const [invalidContactNumber, setInvalidContactNumber] = useState(false);
+  const [phone, setPhone] = useState('');
+  const [invalidPhone, setInvalidPhone] = useState(false);
   const [emailId, setEmailId] = useState('');
   const [invalidEmailId, setInvalidEmailId] = useState(false);
-  const [isJoinDisabled, setIsJoinDisable] = useState(true);
+
+  const [isJoinDisabled, setIsJoinDisable] = useState(false);  
+  const [queuePosition, setQueuePosition] = useState(null);
+
 
   // const joinQueueActionStatus = useSelector((state) => state.actionStatus['joinQueue']);
   const joinQueueActionStatus = 'fullfiled';
-  const prevActionStatus = useRef();
-  const [activeStep, setActiveStep] = React.useState(0);
-  // const queueInfo = useSelector(selectQueueInfo);
   // const queueInfo = mockQueue;
   const [saveToLocalStorage, setSaveToLocalStorage] = useState(true);
 
+  const getTokenByphone = ({ queueId, phone, redirect })=>{
+    //Need implementing
 
-  // const getTokenByContactNumber = useCallback(useGetTokenByContactNumber(), []);
+  };
 
   // const { notifyByEmail } = useSelector(selectQueueInfo);
   const { notifyByEmail } = queueInfo;
-  const collectEmail = !!notifyByEmail;
   const navigate = useNavigate();
-  // const joinQueue = useJoinQueue();
-  // const dispatch = useDispatch();
 
   const joinQueueHandler = () => {
-    // dispatch(
-    //   joinQueue({
-    //     name,
-    //     contactNumber,
-    //     queueId,
-    //     emailId: collectEmail ? emailId : undefined,
-    //     goToStatusPage: !isAdminPage,
-    //   })
-    //);
+    
+    // e.preventDefault();
+    onSubmitGetToken(phone);
+    // if (!isInQueue) {
+    //   const queueRef = ref(db, 'queue');
+    //   const snapshot = await get(queueRef);
+    //   const position = snapshot.size + 1; // Position in the queue
+    //   await push(queueRef, { userId, name, phone, emailId, status: 'waiting', position });
+    //   setIsInQueue(true);
+    //   setQueuePosition(position);
+
+    //   // Request notification permission
+    //   if (Notification.permission === 'default') {
+    //     Notification.requestPermission();
+    //   }
+    // }
+
 
     navigate(`/token/${createdToken.tokenId}`);
     console.log('join queue...')
   };
 
+  //Check  if user in Queue ?
   const onSubmitGetToken = () => {
-    // dispatch(
-    //   getTokenByContactNumber({ queueId, contactNumber, redirectToTokenPageOnSuccess: true })
-    // );
-
+    //Add user to queue with params: { queueId, phone} and redirect To waiting page when Success
+    getTokenByphone({ queueId, phone, redirect:true });
   };
 
-  const handleNext = async () => {
-    if (invalidContactNumber) 
-      return;
-    if (contactNumber === '') {
-      setInvalidContactNumber(true);
-      return;
-    }
-
-    // check if user is on admin page (pages/Admin/AddMember.jsx) where each step (contact + name) is necessary
-    if (!isAdminPage) {
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
-      return;
-    }
-    onSubmitGetToken(contactNumber);
-    if (queueInfo.selfJoinAllowed) setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
+   
   const handleCancel = () => {
-    //setActiveStep((prevActiveStep) => prevActiveStep - 1);
     navigate(-1);
   };
 
   useEffect(() => {
-    // Reset form only after successful action
-    if (prevActionStatus.current === 'pending' && joinQueueActionStatus === 'fulfilled') {
-      setContactNumber('');
-      setName('');
-      setEmailId('');
-    }
-
-    // Set previous action status for next render
-    prevActionStatus.current = joinQueueActionStatus;
-  }, [joinQueueActionStatus]);
-
-  useEffect(() => {
     const localStorageName = localStorage.getItem('name');
-    const localStorageContact = localStorage.getItem('contact');
+    const localStorageContact = localStorage.getItem('phone');
     const localStorageEmail = localStorage.getItem('email');
     if (localStorageName) {
       setName(localStorageName);
     }
     if (localStorageContact) {
-      setContactNumber(localStorageContact);
+      setPhone(localStorageContact);
     }
     if (localStorageEmail) {
       setEmailId(localStorageEmail);
@@ -143,152 +103,55 @@ export function JoinQueueForm({ queueId, isAdminPage, buttonText }) {
   }
 
   const onSubmit = () => {
-    if (invalidContactNumber || invalidName) return;
+    if (invalidPhone || invalidName) return;
+
     if (name === '') {
       setInvalidName(true);
       return;
     }
-    if (contactNumber === '') {
-      setInvalidContactNumber(true);
+    if (phone === '') {
+      setInvalidPhone(true);
       return;
     }
 
-    if (collectEmail && emailId === '') {
+    if (emailId === '') {
       setInvalidEmailId(true);
       return;
     }
 
     if (saveToLocalStorage) {
-      localStorage.setItem('contact', contactNumber);
+      localStorage.setItem('phone', phone);
       localStorage.setItem('name', name);
       localStorage.setItem('email', emailId);
     } else {
-      localStorage.removeItem('contact');
+      localStorage.removeItem('phone');
       localStorage.removeItem('name');
       localStorage.removeItem('email');
     }
 
     joinQueueHandler();
-    // reset to first step on queue page (pages/Admin/AddMember.jsx)
-    if (isAdminPage) setActiveStep(0);
   };
 
   const checkJoinDisabled = () => {
     setIsJoinDisable (
-      invalidContactNumber ||
+      invalidPhone ||
       invalidName ||
-      contactNumber === '' ||
+      phone === '' ||
       name === '' ||
-      (collectEmail && (emailId === '' || invalidEmailId))
+      ((emailId === '' || invalidEmailId))
     );
   };
 
-  const checkNextDisabled = () => {
-    return invalidContactNumber || contactNumber === '';
-  };
-
-  const steps = [
-    {
-      id: 'phone',
-      label: 'Enter phone number',
-      item: (
-        <div className={styles.formItem}>
-          <PhoneInput
-            isValid={!invalidContactNumber}
-            setInvalidContact={setInvalidContactNumber}
-            contact={contactNumber}
-            onChange={(val) => setContactNumber(val)}
-            onKeyDown={handleNext}
-          />
-        </div>
-      ),
-    },
-    {
-      id: 'rest-info',
-      label: 'Enter name',
-      item: (
-        <>
-          <div className={styles.formItem}>
-            <InputField
-              placeholder="Name"
-              value={name}
-              onKeyPress={(e) => handleEnterPress(e, onSubmit)}
-              onChange={handleNameChange}
-              error={invalidName}
-              helperText={invalidName ? 'Enter a valid name' : ''}
-              autoFocus
-            />
-          </div>
-          {collectEmail ? (
-            <div className={styles.formItem}>
-              <InputField
-                placeholder="Email"
-                value={emailId}
-                onKeyPress={(e) => handleEnterPress(e, onSubmit)}
-                onChange={handleEmailChange}
-                error={invalidEmailId}
-                helperText={invalidEmailId ? 'Enter a valid name' : ''}
-              />
-            </div>
-          ) : null}
-        </>
-      ),
-    },
-  ];
-
-  const renderBox = (index) => {
-    const backButton =
-      index === 0 ? null : (
-        <StandardButton outlined disabled={index === 0} onClick={handleBack}>
-          Back
-        </StandardButton>
-      );
-    const isSubmitStep = index === steps.length - 1 && (queueInfo.selfJoinAllowed || isAdminPage);
-    const boxContent = isSubmitStep ? (
-      <>
-        <Checkbox
-          name="saveToLocalStorage"
-          label="Save for later use"
-          checked={saveToLocalStorage}
-          onChange={() => {
-            setSaveToLocalStorage(!saveToLocalStorage);
-          }}
-        />
-        <div className={styles.formBoxVerticalButtons}>
-          {/* <LoadingStatus dependsOn="joinQueue"> */}
-          <StandardButton disabled={checkJoinDisabled()} onClick={onSubmit}>
-            {buttonText}
-          </StandardButton>
-          {/* </LoadingStatus> */}
-          <span className={styles.formButtonsSpace} />
-          {backButton}
-        </div>
-      </>
-    ) : (
-      <>
-        <StandardButton disabled={checkNextDisabled()} variant="contained" onClick={handleNext}>
-          Next
-        </StandardButton>
-        <span className={styles.formButtonsSpace} />
-        {backButton}
-      </>
-    );
-    const boxClasses = isSubmitStep
-      ? `${styles.formBox} ${styles.formBoxVertical}`
-      : `${styles.formBox}`;
-    return <Box className={boxClasses}>{boxContent}</Box>;
-  };
-
+    
   return (
-    <Box>
+    <Container className={styles.formBox}>
       <div className={styles.formItem}>
         <Form.Label htmlFor="inputPhone">Phone</Form.Label>
         <PhoneInput
-          isValid={!invalidContactNumber}
-          setInvalidContact={setInvalidContactNumber}
-          contact={contactNumber}
-          onChange={(val) => setContactNumber(val)}
-          onKeyDown={handleNext}
+          isValid={!invalidPhone}
+          setInvalidContact={setInvalidPhone}
+          contact={phone}
+          onChange={(val) => setPhone(val)}
         />       
         
       </div>
@@ -300,7 +163,7 @@ export function JoinQueueForm({ queueId, isAdminPage, buttonText }) {
           aria-describedby="passwordHelpBlock"
           placeholder="Name"
           value={name}
-          onKeyPress={(e) => handleEnterPress(e, onSubmit)}
+          // onKeyPress={(e) => handleEnterPress(e, onSubmit)}
           onChange={handleNameChange}
           error={invalidName}
           helperText={invalidName ? 'Enter a valid name' : ''}
@@ -308,7 +171,7 @@ export function JoinQueueForm({ queueId, isAdminPage, buttonText }) {
         />
         
       </div>
-      {collectEmail ? (
+      {notifyByEmail ? (
         <div className={styles.formItem}>
         <Form.Label htmlFor="inputEmail">Email</Form.Label>
         <Form.Control
@@ -317,7 +180,7 @@ export function JoinQueueForm({ queueId, isAdminPage, buttonText }) {
           aria-describedby="passwordHelpBlock"
           placeholder="Email"
           value={emailId}
-          onKeyPress={(e) => handleEnterPress(e, onSubmit)}
+          // onKeyPress={(e) => handleEnterPress(e, onSubmit)}
           onChange={handleEmailChange}
           error={invalidEmailId}
           helperText={invalidEmailId ? 'Enter a valid name' : ''}
@@ -326,13 +189,13 @@ export function JoinQueueForm({ queueId, isAdminPage, buttonText }) {
       ) : null}
         <Checkbox
           name="saveToLocalStorage"
-          label="Save for later use"
+          label="Save for later"
           checked={saveToLocalStorage}
           onChange={() => {
             setSaveToLocalStorage(!saveToLocalStorage);
           }}
         />
-      <Container className={styles.formBoxVerticalButtons}>
+      <div className={styles['vertical-buttons']}>
         <StandardButton  variant="contained" disabled={isJoinDisabled} onClick={onSubmit}>
           Join
         </StandardButton>
@@ -340,8 +203,8 @@ export function JoinQueueForm({ queueId, isAdminPage, buttonText }) {
         <StandardButton outlined onClick={handleCancel}>
           Cancel
         </StandardButton>        
-      </Container>
-    </Box>
+      </div>
+    </Container>
   );
 }
 

@@ -5,7 +5,7 @@ import Switch from '@material-ui/core/Switch';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Checkbox from '../../../common/Checkbox/Checkbox';
 import { setNotificationPreference } from '../../../../services/notification';
-import styles from './status.module.scss';
+import styles from '../GuestPage.module.scss';
 
 export default () => {
   //const notificationPermission = useSelector((state) => state.appReducer.notificationPermission);
@@ -21,13 +21,13 @@ export default () => {
         onChange={(event) => setNotificationPreference(event.target.checked)}
       />
 
-        <Checkbox
+        {/* <Checkbox
           type="switch"
           // name="saveToLocalStorage"
-          label="Enable notification"
+          label="Enable notification111"
           checked={notificationPermission === 'granted'}
           onChange={(event) => setNotificationPreference(event.target.checked)}
-        />
+        /> */}
       {/* <Switch
         checked={notificationPermission === 'granted'}
         classes={{ thumb: 'switch-thumb' }}

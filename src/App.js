@@ -3,15 +3,13 @@ import React, {useState, useEffect} from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppProvider } from './Context';
 
-import QueueView from './Components/Pages/Guest/QueueView';
-import Navbar from './Components/common/Nav/Navbar';
-import JoinQueue from './Components/Pages/Join/JoinPage';
+import JoinQueue from './Components/Pages/Guest/JoinQueuePage';
 import './App.css'; // Create a CSS file for styling
 import LoginPage from './Components/Pages/LandingPage/LoginPage';
 import ContactPage from './Components/Pages/LandingPage/ContactPage';
 import LandingPage from './Components/Pages/LandingPage/LandingPage';
-import TokenStatusPage from './Components/Pages/Guest/TokenStatus/TokenStatusPage'
-import AdminPage from './Components/Pages/Admin/AdminPage';
+import GuestWaitingPage from './Components/Pages/Guest/GuestWaitingPage'
+import QueueAdminPage from './Components/Pages/Queue/QueueAdminPage';
 import QrScanner from './Components/common/QrScanner/QrScanner';
 import UserPage from './Components/Pages/Guest/GuestPage'
 import PopupNotifications from './Components/common/Popup';
@@ -19,6 +17,7 @@ import Footer from './Components/common/Footer/Footer'
 import Header from './Components/common/Header/StandardHeader'
 import BackToTopButton from './Components/common/TopButton/Back2TopButton';
 import QueueMonitor from './Components/Pages/Home/QueueMonitor' 
+import PageNotFound from './Components/Pages/PageNotFound'
 import { getToken, onMessage } from "firebase/messaging";
 import { messaging } from "./FirebaseConfig";
 
@@ -80,13 +79,13 @@ const App = () => {
       <Header/>
       <Routes>
         <Route path="/" index element={<LandingPage />} />
-        <Route path="/guest" index element={<UserPage />} />
+        <Route path="/guest" element={<UserPage />} />
         {/* <Route path="/login" element={<LoginPage />} /> */}
         <Route path="/login" element={<QueueMonitor />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/queue/:queueId" element={<AdminPage />} />
+        <Route path="/queue/:queueId" element={<QueueAdminPage />} />
         <Route path="/j/:queueName" element={<JoinQueue />} />
-        <Route path="/token/:tokenId" element={<TokenStatusPage />} />
+        <Route path="/token/:tokenId" element={<GuestWaitingPage />} />
         <Route path="/scanQr" element={<QrScanner />} />
         <Route path="/pageNotFound/queueName=:queueName" element={PageNotFound} />
         {/* <Route component={PageNotFound} /> */}

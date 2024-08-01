@@ -2,27 +2,32 @@
 
 .formBox {
   display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.formItem {
-  margin: 1rem 0;
-}
-
-.formBoxVertical {
   flex-direction: column;
-  margin-top: 1rem;
-}
-
-.formBoxVerticalButtons {
-  display: flex;
   justify-content: center;
-}
-.formButtonsSpace {
-  width: 1rem;
+  margin: 1rem;
+ 
+  .formItem {
+    margin: 0.5rem 0.5rem;
+  }
+  
+  .formBoxVertical {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  
+  .vertical-buttons {
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .formButtonsSpace {
+    width: 1rem;
+  }
+  
+  .stepTopSpace {
+    padding-top: 1.5rem;
+  }
 }
 
-.stepTopSpace {
-  padding-top: 1.5rem;
-}
+

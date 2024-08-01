@@ -66,7 +66,7 @@ const CreateJoinForm = (props) => {
     <div data-aos="zoom-in" className={styles['create-join-form']}> 
       <Form.Label htmlFor="queueName">Event</Form.Label>
       <Form.Select id='queueName'>
-        <option disabled='true' selected>Select event name select</option>
+        <option disabled={true} selected>Select event name select</option>
       </Form.Select>
       <br />
       <div className={styles['input-box']}>

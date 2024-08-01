@@ -1,0 +1,320 @@
+@import '../../common.scss';
+
+
+.header {
+  @include queue-name-header();
+  margin-top: 0;
+}
+
+
+.wait-time {
+  font-size: 24px;
+  color: #ff5722;
+  margin-bottom: 30px;
+}
+
+// ---------------------------------------------
+// For TockenNumber section in guest page
+// ----------------------------------------------
+.token-number-container {
+  z-index: 10;
+  width: 14.0625rem;
+  
+  .count-container {
+    background-image: url('../../../../public/images/Hanging-box.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    // height: fit-content;
+    justify-content: center;
+    // box-shadow: 0rem 0.1875rem 0.375rem #00000029;
+    // background-color: #dedcff;
+    height: 200px;
+    // border-radius: 0.375rem;
+    // border: 0.0625rem solid #3a3768;
+  }
+  span {
+    @include center-horizontally();
+    @include text-color();
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+
+  }
+  .count {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.8125rem;
+    font-weight: bold;
+    width: 7rem;
+    height: 4rem;
+    text-align: center;
+    // border: 5px solid;
+    border-block: solid;
+  }
+
+  //For Mobile and small sized devices.
+  @media only screen and (max-width: 600px) {
+    .hanging-threads {
+      height: 3.4375rem;
+      margin-top: -2.1875rem;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+// For TockenStatus section
+// ----------------------------------------------
+.status-box {
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.6rem;
+  // border-radius: 25% 10%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  height: 85%;
+  width: 80%;
+  padding: 1rem;
+  // min-width: 16rem;
+  z-index: 10;
+  // @include center-horizontally();
+  //For bigger screed sized devices.
+  @media only screen and (min-width: 600px) {
+    margin: 1rem;
+  }
+
+  h3, h6 {
+    @include center-horizontally();
+    display: block;
+  }
+  .count {
+    font-family: 'Pacifico', Arial, Helvetica, sans-serif;
+    font-size: 4rem;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    @include center-horizontally();
+    padding: 2rem;
+    button {
+      padding: 0.3rem 0.5rem;
+    }
+  }
+
+  .refresh-button{
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+.status-box:last-child{
+  bottom: 0px;
+}
+
+
+
+
+// ----------------------------------------------------------------------
+// For TokenList component
+//------------------------------------------------------------------------
+// .token-list-contaner div{
+//   border: 1px solid red;
+// }
+
+.token-list-contaner{
+  // border: 1px solid red;
+
+  @include center-horizontally();
+  width: 100vh;
+  // padding: 1rem;
+  // margin: 0 auto auto auto;
+  display: flex;
+  flex-flow: column ;  
+}
+
+.token-list {
+  // border: 1px solid red;
+  @include center-horizontally();
+  // max-width: 70rem;
+  // padding: 1rem;
+  // // margin: 0 auto auto auto;
+  // display: flex;
+  // flex-flow: column wrap ;
+  list-style: none;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  padding: 0;
+}
+
+
+// ----------------------------------------------------------------------
+// For Token component
+//------------------------------------------------------------------------
+.token {
+  // border: 1px solid red;
+  min-width: 400px;
+  // text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  border-radius: 0.6rem;
+  border-top: 1px solid #cacaca;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+  // width: 100%;
+
+  margin: 1rem;
+  padding: 0;
+
+  &:hover {
+    -webkit-box-shadow: 0 3px 18px -6px black;
+    -moz-box-shadow: 0 3px 18px -6px black;
+    box-shadow: 0 3px 18px -6px black;
+  }
+
+  // --------------------------------------------------------------
+  // For Token section in queue admin page
+  // -------------------------------------------------------------
+  .token-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+    min-width: 4rem;
+    background: $primary-color-dark;
+    opacity: 0.7;
+
+    & > p {
+      margin: 0;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fafafa;
+    }
+  }
+
+  .token-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+
+    width: 100%;
+    margin-left: 1rem;
+
+    .token-name-time {
+      text-align: left;
+      align-self: center;
+      word-break: break-word;
+      & > p {
+        margin: 0;
+
+        &:first-child {
+          font-size: 0.75rem;
+        }
+        &:last-child {
+          color: $primary-color-dark;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .token-operations {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+
+      .token-icon-set {
+        display: flex;
+        @media screen and (max-width: 600px) {
+          flex-direction: column;
+        }
+        align-items: stretch;
+        .token-icon {
+          color: $primary-color-dark;
+        }
+        .token-icon-notified {
+          // color: green;
+          color: rgb(243, 184, 145);
+          background-color: rgb(243, 184, 145);
+        }
+      }
+
+      .token-remove {
+        background-color: rgb(243, 184, 145);
+        margin: 0;
+        padding: 0;
+        border-radius: 0 0.6rem 0.6rem 0;
+        cursor: pointer;
+
+        border: 0.1rem solid $primary-color-dark;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > p {
+          text-transform: uppercase;
+          text-align: center;
+          font-size: 0.75rem;
+          font-weight: bold;
+          color: $primary-color-dark;
+          transform: rotate(-90deg);
+        }
+      }
+
+      .token-remove-disabled {
+        @extend .token-remove;
+        background-color: #7a7676;
+      }
+    }
+  }
+}
+
+.custom-color {
+  color:$primary-color-dark;
+}
+
+.token-icon{
+  text-align: center;
+  color: $primary-color-dark;
+}
+
+.token-icon-notified {
+  // color: green;
+  color: rgb(243, 184, 145);
+  // background-color: rgb(243, 184, 145);
+}
+
+
+
+// -----------------------------------------------
+// For QueueView in guest page
+// -----------------------------------------------
+.queue-view-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+

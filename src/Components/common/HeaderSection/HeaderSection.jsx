@@ -1,16 +1,13 @@
 import React from 'react';
 import styles from './HeaderSection.module.scss';
-import Header from '../Header';
 
 export default (props) => (
   <div className={styles['header-bar']}>
-    <div className={styles['queue']}>
       <div className={styles['header-title']}>
-        <Header className={styles['header']}>{props.queueName}</Header>
+        <h1 className={styles['header']}>{props.queueName}  </h1>
       </div>
-      <div className={styles['sub-header']}>
-        <h2>Ready to join</h2>
+      <div className={styles['header-subtitle']}>
+        <h3>{props.subTitle}111</h3>
       </div>
-    </div>
   </div>
 );

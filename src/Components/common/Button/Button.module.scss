@@ -7,15 +7,15 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: large;
+  font-size: small;
   border: 2px solid $primary-color-dark;
   border-radius: 0.6rem;
   text-align: center;
   transition: background 0.8s;
   background-position: center;
   text-transform: capitalize;
-  min-height: 2.5rem;
-  padding: 0.2rem 1rem;
+  min-height: 2rem;
+  padding-right: 0.5rem;
 
   &:focus {
     outline: none;

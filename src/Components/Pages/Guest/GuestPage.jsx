@@ -3,7 +3,6 @@ import React from 'react';
 import Header from '../../common/Header';
 import JoinForm from '../../common/CreateJoinForm';
 import styles from './GuestPage.module.scss';
-import MyQueues from '../Home/MyQueues';
 
 function UserPage(){
   let subtitle = 'Give Users a Delightful Waiting Experience!!!';
@@ -14,6 +13,7 @@ function UserPage(){
 
   return (
     <div id="target_top" className={styles['user-page']}>
+      <Header/>
       <div data-aos="zoom-in">
         {/* <Header className={styles['main-header']}>Queue Me Up</Header> */}
         {/* <p className={styles.subtitle}>{subtitle}</p> */}
@@ -21,7 +21,6 @@ function UserPage(){
           Choose your event...
         </p>
       </div>
-      {/* <MyQueues /> */}
       <JoinForm />
 
       <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 220">

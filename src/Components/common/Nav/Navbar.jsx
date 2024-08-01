@@ -25,7 +25,7 @@ function HomeIcon(props) {
   );
 }
 
-const LeftNav = () => {
+const NavBar = () => {
   return (
     <Container fluid='true' id="header" className={`header align-items-center fixed-top `}>
       {/* <Logo/> */}
@@ -38,7 +38,7 @@ const LeftNav = () => {
               <Nav.Link href="#home">Home</Nav.Link>
               <Nav.Link href="#about-section">About</Nav.Link>              
               <Nav.Link href="#link">Features</Nav.Link>
-              <Nav.Link href="#link">Team</Nav.Link>
+              <Nav.Link href="#">Team123</Nav.Link>
               <Nav.Link href="#link">Contact</Nav.Link>
               <Stack direction="horizontal" gap={2} id='btn-stack'>
                 <Link to="/login">
@@ -60,4 +60,4 @@ const LeftNav = () => {
   );
 };
 
-export default LeftNav;
+export default NavBar;

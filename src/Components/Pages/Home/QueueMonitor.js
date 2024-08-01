@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { ref, onValue, update, remove, push, get } from 'firebase/database';
 import { db } from '../../../FirebaseConfig';
 import './QueueMonitor.css';
+import MyQueues from './MyQueues'
+import QueueAdminPage from '../Queue/QueueAdminPage';
 
-const Dashboard = () => {
+const QueueMonitor = () => {
   const [queue, setQueue] = useState([]);
   const [newGuestName, setNewGuestName] = useState('');
   const [loading, setLoading] = useState(false);
@@ -89,44 +91,10 @@ const Dashboard = () => {
 
   return (
     <>
-    <MyQueues/>
-    <div className="dashboard-container">
-      <h1>Queue Dashboard</h1>
-      <form onSubmit={handleAddGuest} className="add-guest-form">
-        <input
-          type="text"
-          placeholder="Guest Name"
-          value={newGuestName}
-          onChange={(e) => setNewGuestName(e.target.value)}
-          required
-        />
-        <button type="submit">Add Guest</button>
-      </form>
-      <h2>
-        {queue.length > 1 ? `There are currently ${queue.length} people in the queue` : `There is currently ${queue.length} person in the queue`}
-    </h2>
-      <ul className="queue-list">
-        {queue.map(({ key, name, position }) => (
-          <li 
-            key={key} 
-            className={`queue-item ${position === 0 ? 'current' : ''}`}
-          >
-            {position}. {name} 
-            <div className="action-buttons">
-              <button className='check-in' onClick={() => handleCheckIn(key, position)}>Check-In</button>
-              <button className='no-show' onClick={() => handleNoShow(key, position)}>No Show</button>
-            </div>
-          </li>
-        ))}
-      </ul>
-      {loading && (
-        <div className="loading-overlay">
-          <div className="spinner"></div>
-        </div>
-      )}
-    </div>
+      {/* <MyQueues/> */}
+      <QueueAdminPage queueId={queue.queueId}/>
     </>
   );
 };
 
-export default Dashboard;
+export default QueueMonitor;

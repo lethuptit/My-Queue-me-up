@@ -6,23 +6,28 @@ import { useDeleteQueue } from '../../../store/asyncActions';
 import { selectQueues } from '../../../store/queues';
 // import { useDispatch, useSelector } from 'react-redux';
 import styles from './Home.module.scss';
+import Form from 'react-bootstrap/esm/Form';
 
 import { queues as Qs } from '../../../__mocks__/data'
-const queues = Qs.queues;
 
-function MyQueues() {
+function MyQueues({isViewInfo=false}) {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const queues = useSelector(selectQueues);
-  // const deleteQueue = useDeleteQueue();
 
-  const handleDelete = (e, queue) => {
-    // Don't trigger parent's onClick
-    e.stopPropagation();
-    // dispatch(deleteQueue({ queueId: queue.queueId, goHome: false }));
+  function getActiveQueues({hostId}){
+
+    //mockind data
+    return queues = Qs.queues
+  }
+
+  const queues = getActiveQueues();
+
+  const handleChange = (e) => {
+    if(isViewInfo)
+    {
+      const queueId = e.target.value;
+      navigate(`/queue/${queueId}`)
+    }
   };
-
-  const handler = (queueId) => navigate(`/queue/${queueId}`);
 
   return (
     <div className={styles['my-queue']}>
@@ -32,24 +37,19 @@ function MyQueues() {
           : 'What would you like to do today? Here are your active queues:'}
       </p>
       <Form.Label htmlFor="queueName">Event</Form.Label>
-      <Form.Select id='queueName'>
-        <option disabled='true' selected>Select event name select</option>
-        {queues.map((queue) => {(
-            <div
-              key={queue.queueId}
+      <Form.Select id='queueName' onChange={handleChange}>
+        <option disabled={true} selected>Select event name select</option>
+        {queues.map((queue) => (
+            <option
+              value={queue.queueId}
               tabIndex="0"
-              role="button"
-              onKeyDown={handler(queue.queueId)}
-              onClick={handler(queue.queueId)}
+              // role="button"
               className={styles['my-queue-item']}
             >
-              <div>{queue.queueName}</div>
-              {/* <IconButton onClick={(e) => handleDelete(e, queue)}>
-              <DeleteIcon />
-            </IconButton> */}
-            </div>
-          );
-        })}
+            {queue.queueName}
+            </option>
+            )
+        )}
       </Form.Select>
     </div>
   );

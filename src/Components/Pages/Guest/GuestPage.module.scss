@@ -3,7 +3,7 @@
 .user-page {
   min-height: 100vh;
   padding-top: 100px; // Extra padding as placeholder for navbar
-  margin: 0 1rem;
+  margin: 100px 1rem;
   display: flex;
   flex-direction: column;
   .main-header {
@@ -30,216 +30,91 @@
   }
 }
 
-.section {
-  padding: 8rem 10rem;
-  @media screen and (max-width: 550px) {
-    padding: 2rem;
+// .main-container div{
+//   border:  1px solid red;
+// }
+
+.main-container {
+  max-width: 100%;
+  margin: 100px 20px;
+  // padding: 20px;
+  // text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  & > h2 {
-    @include standard-header();
-    font-family: $header-font;
-    font-size: 2rem;
-  }
-  & > .container {
-    margin: 4rem 0;
-    @media screen and (max-width: 550px) {
-      margin: 2rem 0;
-    }
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  100% {
+    opacity: 1;
   }
 }
 
-.benefits-info {
-  @include background-color();
-  @include text-color();
-  padding-top: 1rem;
-  .benefits-container {
-    .benefit {
-      margin: 2rem;
-      display: flex;
-      flex-direction: column;
-      img {
-        height: 10rem;
-        margin-bottom: 2rem;
-      }
-      p {
-        text-align: center;
-        font-weight: 600;
-      }
-    }
-  }
-  // Position needs to be set for parent so that corona particles can be
-  // positioned absolute to this div
-  position: relative;
-  .corona-1 {
-    height: 7rem;
-    position: absolute;
-    top: 0rem;
-    right: 15vw;
-  }
-  .corona-2 {
-    height: 3rem;
-    position: absolute;
-    left: 6rem;
-  }
-  .corona-3 {
-    height: 2rem;
-    position: absolute;
-    bottom: 2rem;
-  }
-}
-
-.queue-info {
-  .queue-container {
-    .queue {
-      flex: 0 1 25rem;
-      text-align: left;
-      margin: 2rem;
-      @media screen and (max-width: 550px) {
-        margin: 2rem 0;
-      }
-      .list-info {
-        width: 100%;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        justify-content: center;
-        img {
-          float: left;
-          position: relative;
-          bottom: -0.3rem;
-          width: 1rem;
-          height: 1rem;
-          margin-right: 0.6rem;
-        }
-        h3 {
-          color: #3a3768;
-          margin: 0;
-          padding: 0;
-        }
-        p {
-          margin: 1rem;
-          text-align: left;
-          color: #3a3768;
-          padding-left: 0.6rem;
-        }
-      }
-      img {
-        justify-content: center;
-        max-width: 100%;
-        height: auto;
-      }
-    }
-  }
-}
-
-.join-info {
-  @include background-color;
-  @extend .queue-info;
-}
-
-.get-started {
-  @extend .queue-info;
-
-  .button-group {
-    @include center-horizontally();
-    flex-wrap: wrap;
-    button {
-      margin: 0.5rem 2rem;
-      min-width: 10rem;
-    }
-  }
-}
-
-.extra-info {
-  background-color: $primary-color-dark;
-  .extra-container {
-    margin: 0;
-    .card {
-      padding: 0.5rem;
-      max-height: 16rem;
-      max-width: 16rem;
-      text-align: center;
-
-      img {
-        width: 20%;
-        height: 20%;
-      }
-
-      .brief-description {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: white;
-        text-transform: capitalize;
-      }
-
-      .detailed-description {
-        color: white;
-        vertical-align: top;
-      }
-    }
-  }
-}
-
-#curved-div-2 {
+.main-body {
+  width: 100%;
   display: flex;
-}
-
-.my-queue {
-  @include text-color();
-  @include center-horizontally();
-  flex-direction: column;
-  .my-queue-item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 18rem;
-    border-bottom: 0.1rem solid;
-    border-top: 0.1rem solid;
-    padding: 0.25rem 1rem;
-
-    &:hover {
-      background-color: #f9f9f9;
-    }
-  }
-}
-
-.price-card {
-  display: flex;
-  flex-direction: column;
-  // border: 1px solid #ccc;
-  border-radius: 1rem;
-  box-shadow: 0 4px 8px 0 rgba(31, 14, 14, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 2rem;
-  padding: 2rem;
-
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px auto;
   @media screen and (max-width: 550px) {
-    margin: 1rem;
-    padding: 1rem;
+    margin: 2rem;
   }
+
   
-  text-align: center;
-  list-style: none;
-  h1 {
-    margin-bottom: 0;
+}
+
+.header {
+  @include queue-name-header();
+  margin-top: 0;
+}
+
+.notification-container {
+  margin-top: 12rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .info-icon {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #3a3768;
   }
-  ul {
-    margin: 1rem;
-    @media screen and (max-width: 550px) {
-      margin: 1 0.2rem;
-    }
-    padding: 0;
+
+  span {
+    padding-right: 8px;
   }
-  .subtitle {
-    margin-top: 0;
-    font-size: small;
-    font-weight: lighter;
-  }
-  .amount {
-    font-size: x-large;
-    font-weight: bolder;
+
+  .switch-thumb {
+    width: 12;
+    height: 12;
+    box-shadow: 'none';
   }
 }
+
+
+
+
+.queue-view-list {
+  list-style: none;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  padding: 0;
+}
+
+.queue-view-list li{
+  text-align: left;
+}
+
+.queue-view-item {
+  font-size: 24px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.queue-view-item:nth-child(-n+20) {
+  font-size: 32px;
+  font-weight: bold;
+}
+

@@ -5,7 +5,7 @@ import {PropagateLoader} from 'react-spinners/PropagateLoader';
 import styles from './Loading.module.scss';
 
 const Loading = ({ children, actionStatus, isLoading }) => {
-  if (actionStatus === 'pending' || isLoading === true) {
+  if ((actionStatus&&actionStatus === 'pending') || isLoading === true) {
     return (
       <div className={styles.main}>
         <PropagateLoader color="#3a3768" />
@@ -22,7 +22,7 @@ Loading.defaultProps = {
 };
 
 Loading.propTypes = {
-  isLoading: PropTypes.bool,
+  isLoading: PropTypes.bool, 
   actionStatus: PropTypes.oneOf(['pending', 'fulfilled', 'rejected']),
 };
 
