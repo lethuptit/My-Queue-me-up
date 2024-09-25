@@ -1,0 +1,80 @@
+
+/* Base Sidebar Styling */
+.sidebar {
+  width: 200px;
+  background-color: #f8f9fa;
+  height: 90vh;
+  position: relative;
+  padding-top: 80px;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  margin-left: 20px;
+  border-radius: 8px;
+  margin-top: -45px;
+  border-radius: 2% auto;
+  z-index: 950; /* Keep the sidebar is below the header */
+}
+
+.sidebar .nav-link {
+  color: #333;
+  padding: 10px 15px;
+}
+
+.sidebar .nav-link.active {
+  font-weight: bold;
+  color: #6560a7;
+}
+
+/* Sidebar hidden on mobile by default */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    z-index: 899;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  /* Sidebar toggle button */
+  .sidebar-toggle {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 900; /* Ensure the toggle button is above the sidebar */
+  }
+}
+
+/* Hide toggle button on larger screens */
+.sidebar-toggle {
+  display: none;
+}
+
+/* Sidebar overlay for mobile */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 901; /* Ensure overlay is above the sidebar */
+  overflow: hidden;
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+    z-index: 950; /* Sidebar below the header on larger screens */
+  }
+}

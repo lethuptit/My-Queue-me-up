@@ -1,0 +1,27 @@
+@import '../../common.scss';
+
+.pagination {
+    display: flex;
+    border: 1px solid #fff;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  button {
+    // padding: 10px;
+    background: white;
+    color: $primary-color-dark;
+    border: 1px solid $primary-color-light;
+  }
+  
+  .active {
+    background: $primary-color-dark;
+    color: #fff;
+    border: 1px solid #fff;
+  }
+
+  .disabled-link {
+    color: $primary-color-light;
+    cursor: unset;
+    text-decoration: none;
+  }

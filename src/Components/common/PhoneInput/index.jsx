@@ -26,7 +26,6 @@ export default (props) => {
     }
   }
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
   return (
     <PhoneInput
       placeholder="Phone Number"

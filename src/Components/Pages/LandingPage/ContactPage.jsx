@@ -1,101 +1,122 @@
-import React, { Fragment } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-// import axios from "axios";
+import React, { useState } from "react";
+import './Contact.scss'
+import { Button } from '@mui/material';
+import { sendEmail } from '../../../api/notify';
+// import { SMTPClient } from 'emailjs';
 // import { Container, Row, Col } from "react-bootstrap";
+import Toast from '../../common/Toast'
 
 function ContactPage() {
+    const [isSent, setIsSent] = useState(false)
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await sendEmail({
+                toEmail: "queuemeupteam@gmail.com",
+                fromEmail: email,
+                fromName: name,
+                subject,
+                message: message
+            })
+
+            
+            setName('')
+            setEmail('')
+            setMessage('')
+            setSubject('')
+            setIsSent(true)
+        }
+        catch (err) {
+            console.log("Error in seding email: ", err.message)
+        }
+    }
+
+    const handleNameChange = (e) => {
+        setName(e.target.value)
+    }
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const handleSubjectChange = (e) => {
+        setSubject(e.target.value)
+    }
+
+    const handleMessageChange = (e) => {
+        setMessage(e.target.value)
+    }
+
     return (
-        < section id = "contact" class="contact section" >
-
-            {/* <!-- Section Title --> */ }
-            < div class="container section-title" data-aos="fade-up" >
-                    <h2>Contact</h2>
-                    <p>Contact Us</p>
-                </div >
-        {/* <!-- End Section Title --> */ }
-
-        < div class="container" data-aos="fade-up" data-aos-delay="100" >
-            <div class="row gy-4">
-                <div class="col-lg-6">
-                    <div class="row gy-4">
-                        <div class="col-md-6">
-                            <div class="info-item" data-aos="fade" data-aos-delay="200">
-                                <i class="bi bi-geo-alt"></i>
-                                <h3>Address</h3>
-                                <p>A108 Adam Street</p>
-                                <p>New York, NY 535022</p>
+        <section id="contact" className="contact section">
+            <div className="container section-title" data-aos="fade-up">
+                <h2>Contact</h2>
+            </div>
+            <div className="container" data-aos="fade">
+                <div className="row gy-5 gx-lg-5">
+                    <div className="col-lg-4">
+                        <div className="info">
+                            <h3>Get in touch</h3>
+                            <p>Please feel free to contact the development team for any suggestions that help us improve this product.</p>
+                            <p>Thank you in advance.</p>
+                            <div className="info-item d-flex">
+                                <i className="bi bi-envelope flex-shrink-0"></i>
+                                <div>
+                                    <h4>Email:</h4>
+                                    <p>queuemeupteam@gmail.com</p>
+                                </div>
                             </div>
                         </div>
-                        {/* <!-- End Info Item --> */}
+                    </div>
 
-                        <div class="col-md-6">
-                            <div class="info-item" data-aos="fade" data-aos-delay="300">
-                                <i class="bi bi-telephone"></i>
-                                <h3>Call Us</h3>
-                                <p>+1 5589 55488 55</p>
-                                <p>+1 6678 254445 41</p>
+                    <div className="col-lg-8">
+                        <form onSubmit={handleSubmit} role="form" className="email-form">
+                            <div className="row">
+                                <div className="col-md-6 form-group">
+                                    <input type="text" name="name" className="form-control" id="name" placeholder="Your Name"
+                                        value={name}
+                                        onChange={handleNameChange}
+                                        required />
+                                </div>
+                                <div className="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email"
+                                        value={email}
+                                        onChange={handleEmailChange}
+                                        required />
+                                </div>
                             </div>
-                        </div>
-                        {/* <!-- End Info Item --> */}
-
-                        <div class="col-md-6">
-                            <div class="info-item" data-aos="fade" data-aos-delay="400">
-                                <i class="bi bi-envelope"></i>
-                                <h3>Email Us</h3>
-                                <p>info@example.com</p>
-                                <p>contact@example.com</p>
+                            <div className="form-group mt-3">
+                                <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject"
+                                    value={subject}
+                                    onChange={handleSubjectChange}
+                                    required />
                             </div>
-                        </div>
-                        {/* <!-- End Info Item --> */}
-
-                        <div class="col-md-6">
-                            <div class="info-item" data-aos="fade" data-aos-delay="500">
-                                <i class="bi bi-clock"></i>
-                                <h3>Open Hours</h3>
-                                <p>Monday - Friday</p>
-                                <p>9:00AM - 05:00PM</p>
+                            <div className="form-group mt-3">
+                                <textarea className="form-control" name="message" placeholder="Message"
+                                    value={message}
+                                    onChange={handleMessageChange}
+                                    required></textarea>
                             </div>
-                        </div>
-                        {/* <!-- End Info Item --> */}
+                            <div className="my-3">
+                                {/* <div className="loading">Loading</div> */}
+                                {/* <div className="error-message"></div> */}
+                                {isSent && <div><Toast title={'Your message has been sent. Thank you!'} /></div>}
+                            </div>
 
+                            <div className="text-center"><Button className={'send-email-btn'} type="submit">Send Message</Button></div>
+                        </form>
                     </div>
 
                 </div>
 
-                <div class="col-lg-6">
-                    <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-                        <div class="row gy-4">
-
-                            <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required="" />
-                            </div>
-
-                            <div class="col-md-6 ">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email" required="" />
-                            </div>
-
-                            <div class="col-12">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject" required="" />
-                            </div>
-
-                            <div class="col-12">
-                                <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                            </div>
-
-                            <div class="col-12 text-center">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                                <button type="submit">Send Message</button>
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
             </div>
-        </div >
-    </section >
+
+        </section>
     );
 }
 

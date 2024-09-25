@@ -5,3 +5,15 @@ export const handleEnterPress = (event, keyPresshandler) => {
     keyPresshandler();
   }
 };
+
+
+export const windowScroll = () => {
+  const scrolled = document.documentElement.scrollTop;
+  if (scrolled > 150) {
+      return true
+  }
+  else {
+      return false;
+  }
+};
+

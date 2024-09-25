@@ -1,0 +1,42 @@
+@import '../../common.scss';
+
+.formBox {
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem 0;
+  // max-width: 200px;
+
+  //For Mobile and small sized devices.
+  @media only screen and (min-width: 600px) {
+    margin: 1rem 1.5rem;
+  }
+
+  .formItem {
+    margin: 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formBoxVertical {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+  
+  .vertical-buttons {
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .formButtonsSpace {
+    width: 1rem;
+  }
+  
+  .stepTopSpace {
+    padding-top: 1.5rem;
+  }
+}
+
+

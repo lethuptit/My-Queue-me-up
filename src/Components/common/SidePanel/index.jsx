@@ -1,3 +1,5 @@
 import SidePanel from './SidePanel';
+import SidePanelItem from './SidePanelItem'
 
-export default SidePanel;
+
+export {SidePanel, SidePanelItem};

@@ -1,72 +1,64 @@
 @import '../../common.scss';
 
-.user-page {
-  min-height: 100vh;
-  padding-top: 100px; // Extra padding as placeholder for navbar
-  margin: 100px 1rem;
-  display: flex;
-  flex-direction: column;
-  .main-header {
-    @include standard-header();
-    font-family: $header-font;
-    font-size: 5rem;
-  }
-  .subtitle {
-    @include center-horizontally();
-    @include text-color();
-    font-weight: 800;
-    margin: 1rem;
-    font-size: x-large;
-  }
-  .description {
-    @include center-horizontally();
-    @include text-color();
-    margin: 2rem;
-    font-size: larger;
-  }
-  svg {
-    // global margin of 1 rem set. Setting negative margin to fill till the edge
-    margin: 0 -1rem;
-  }
-}
-
-// .main-container div{
-//   border:  1px solid red;
-// }
-
-.main-container {
-  max-width: 100%;
-  margin: 100px 20px;
-  // padding: 20px;
-  // text-align: center;
-  animation: fadeIn 1s ease-in-out;
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
 
-.main-body {
-  width: 100%;
+.user-page {
+  min-height: 80vh;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 20px auto;
-  @media screen and (max-width: 550px) {
-    margin: 2rem;
-  }
+  flex-direction: column;
 
-  
+  & .join-queue-form {
+    margin: auto; // auto for centering
+    // padding-top: 1rem;
+    max-width: 35rem;
+    position: relative;
+    width: 100%;
+    // border: 1px solid red;
+
+    .button-group {
+      @include center-horizontally();
+      flex-wrap: wrap;
+
+      button {
+        margin: 0.5rem 2rem;
+        min-width: 10rem;
+      }
+    }
+
+    .input-box {
+      min-height: 5rem;
+    }
+  }
 }
+
+// .main-container {
+//   max-width: 100%;
+//   animation: fadeIn 1s ease-in-out;
+// }
+
+
+
+// .main-body {
+//   width: 100%;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+//   margin: 1cqmax auto;
+
+// }
 
 .header {
   @include queue-name-header();
-  margin-top: 0;
+  margin: 20px 0;
+
 }
 
 .notification-container {
@@ -92,29 +84,107 @@
   }
 }
 
+// ---------------------------------------------
+// For TockenStatus section in guest page
+// ----------------------------------------------
+.status-box {
+  display: flex;
+  max-width: 650px;
+  flex-direction: column;
+  border-radius: 0.6rem;
+  // border-radius: 25% 10%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  padding: 1rem 2rem 2rem;
+  z-index: 10;
+  @include center-horizontally();
+  // border: 1px solid red;
 
+  .waiting-logo {
+    position: relative;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid color-mix(in srgb, $primary-color-dark, transparent 80%);
 
+    h3 {
+      padding-left: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
 
-.queue-view-list {
-  list-style: none;
-  columns: 2;
-  -webkit-columns: 2;
-  -moz-columns: 2;
-  padding: 0;
+  .waiting-time-info {
+    width: 48%;
+    padding: 10px 0;
+    border-radius: 0.6rem;
+    background-color: $primary-color-light;
+
+  }
+
+  .info-message {
+    color: purple;
+    font-weight: bold;
+    font-size: 20px;
+    // border: 1px solid red;
+  }
+
+  .info-message+p {
+    padding-top: -20px;
+    font-style: italic;
+    color: blue;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    @include center-horizontally();
+    // padding: 2rem;
+
+    button {
+      // padding: 0.3rem 0.5rem;
+      @include app-btn();
+    }
+  }
+
 }
 
-.queue-view-list li{
-  text-align: left;
+// .status-box:last-child {
+//   bottom: 0px;
+// }
+
+
+// -----------------------------------------------
+// For Notification in guest page
+// -----------------------------------------------
+
+.message-update {
+  padding: 20px;
+  // border: 2px solid $secondary-color-dark;
+  border-radius: 8px;
+  background-color: color-mix(in srgb, $secondary-color-light, transparent 40%);
+  margin-top: 20px;
+
+  & h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #28a745;
+  }
+
+  p {
+    padding-top: -20px;
+    font-style: italic;
+    color: blue;
+  }
 }
 
-.queue-view-item {
-  font-size: 24px;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+// BELOW CSS IS SHARED BETWEEN JOIN PAGE WAITING PAGE
+.message {
+  @include center-horizontally();
 }
 
-.queue-view-item:nth-child(-n+20) {
-  font-size: 32px;
-  font-weight: bold;
+.info {
+  @include center-horizontally();
+  color: blue;
 }
-

@@ -1,136 +1,41 @@
-// src/App.js
-import React, {useState, useEffect} from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { AppProvider } from './Context';
-
-import JoinQueue from './Components/Pages/Guest/JoinQueuePage';
+// // src/App.js
+import React from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import './App.css'; // Create a CSS file for styling
-import LoginPage from './Components/Pages/LandingPage/LoginPage';
-import ContactPage from './Components/Pages/LandingPage/ContactPage';
+import Login from './Components/Pages/SignIn/Login';
+import SignUp from './Components/Pages/SignIn/SignUp';
 import LandingPage from './Components/Pages/LandingPage/LandingPage';
+import GuestPage from './Components/Pages/Guest/GuestPage'
 import GuestWaitingPage from './Components/Pages/Guest/GuestWaitingPage'
-import QueueAdminPage from './Components/Pages/Queue/QueueAdminPage';
-import QrScanner from './Components/common/QrScanner/QrScanner';
-import UserPage from './Components/Pages/Guest/GuestPage'
-import PopupNotifications from './Components/common/Popup';
 import Footer from './Components/common/Footer/Footer'
-import Header from './Components/common/Header/StandardHeader'
-import BackToTopButton from './Components/common/TopButton/Back2TopButton';
-import QueueMonitor from './Components/Pages/Home/QueueMonitor' 
-import PageNotFound from './Components/Pages/PageNotFound'
-import { getToken, onMessage } from "firebase/messaging";
-import { messaging } from "./FirebaseConfig";
-
-import { toast, ToastContainer } from "react-toastify";
-import Message from "./Message";
-
-
-
-  
+import { FixedHeader } from './Components/common/Header/StandardHeader'
+import DashboardHome from './Components/Pages/Home/Home';
 
 const App = () => {
-  const [isVisibleTopBUtton, SetisVisibleTopBUtton] = useState(false);
-  const VITE_APP_VAPID_KEY = 'BLi0R3iCOpI916s8NPQNf3J2NgfA5ZcacLvxZNFUtB_53CU2hpJFAf-QmP2kuDW6EPvofg0_pluFaJcnifocE-E';
-
-  async function requestPermission() {
-    //requesting permission using Notification API
-    const permission = await Notification.requestPermission();
-
-    if (permission === "granted") {
-      const token = await getToken(messaging, {
-        vapidKey: VITE_APP_VAPID_KEY,
-      });
-
-      //We can send token to server
-      console.log("Token generated : ", token);
-    } else if (permission === "denied") {
-      //notifications are blocked
-      alert("You denied for the notification");
-    }
-  }
-
-  useEffect(() => {
-    requestPermission();
-  }, []);
-
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
-    const toggleBacktotop = () => {
-      if (window.scrollY > 10) {
-        // backtotop.classList.add('active')
-        SetisVisibleTopBUtton(true)
-      } else {
-        // backtotop.classList.remove('active')
-        SetisVisibleTopBUtton(false)
-
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  
-    onMessage(messaging, (payload) => {
-      console.log('message')
-      toast(<Message notification={payload.notification} />);
-    });
-
   return (
-    <AppProvider>
-      <Header/>
-      <Routes>
-        <Route path="/" index element={<LandingPage />} />
-        <Route path="/guest" element={<UserPage />} />
-        {/* <Route path="/login" element={<LoginPage />} /> */}
-        <Route path="/login" element={<QueueMonitor />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/queue/:queueId" element={<QueueAdminPage />} />
-        <Route path="/j/:queueName" element={<JoinQueue />} />
-        <Route path="/token/:tokenId" element={<GuestWaitingPage />} />
-        <Route path="/scanQr" element={<QrScanner />} />
-        <Route path="/pageNotFound/queueName=:queueName" element={PageNotFound} />
-        {/* <Route component={PageNotFound} /> */}
-      </Routes>
-      <Footer/>
-      <BackToTopButton visible={isVisibleTopBUtton}/>
-      <PopupNotifications />
-    </AppProvider>
+    <>
+      <FixedHeader />
+      <div className={"container-fluid app-container"}>
+        <Routes>
+          <Route path="/" index element={<LandingPage />} />
+          <Route path="/join" element={<GuestPage />} />
+          <Route path="/join/:queueId" element={<GuestPage />} />
+          <Route path="/join/token" element={<GuestWaitingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/dashboard/*" element={<DashboardHome />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+        {/* <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+              <path
+                fill="#6C63FF29"
+                fillOpacity="1"
+                d="M0,224L80,192C160,160,320,96,480,101.3C640,107,800,181,960,181.3C1120,181,1280,107,1360,69.3L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+              />
+            </svg> */}
+      </div>
+      <Footer />
+    </>
   )
-  // <Router>
-  //   <div className="app-container">
-  //     <Nav/>        
-  //     <Routes>
-  //       <Route path="/" element={
-  //         <div> 
-  //           {!isHost && (
-  //             <>
-  //               <button onClick={handleHostButtonClick} className="host-button">
-  //                 Are you a host for this event?
-  //               </button>
-  //               {showPasswordInput && (
-  //                 <form onSubmit={handlePasswordSubmit} className="password-form">
-  //                   <input
-  //                     type="password"
-  //                     placeholder="Enter password"
-  //                     value={password}
-  //                     onChange={(e) => setPassword(e.target.value)}
-  //                     className="password-input"
-  //                     required
-  //                   />
-  //                   <button type="submit" className="submit-button">Submit</button>
-  //                 </form>
-  //               )}
-  //               {/* <JoinQueue userId={userId} /> */}
-  //             </>
-  //           )}
-  //           {isHost && <Dashboard />}
-  //           {userId && <Notification userId={userId} />}
-  //         </div>
-  //       } />
-  //       <Route path="/queue-view" element={<QueueView />} />
-  //     </Routes>
-  //   </div>
-  // </Router>
-
 };
-
 export default App;

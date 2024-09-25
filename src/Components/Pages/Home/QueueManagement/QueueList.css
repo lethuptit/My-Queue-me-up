@@ -1,0 +1,138 @@
+
+  .queue-list-container {
+    padding: 0px;
+    font-family: Arial, sans-serif;
+  }
+  
+
+  .queue-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0px; 
+  }
+  
+  
+  .queue-list-table thead {
+    background-color: #f2f2f2;
+  }
+  
+  .queue-list-table th, .queue-list-table td {
+    padding: 8px; 
+    text-align: left; 
+    border: 1px solid #ddd; 
+  }
+  
+  
+.queue-list-table th:nth-child(5), 
+.queue-list-table td:nth-child(5) {
+    width: 120px; 
+}
+
+.queue-list-table th:nth-child(6), 
+.queue-list-table td:nth-child(6) {
+    width: 80px; 
+}
+.queue-list-table th:nth-child(7), 
+.queue-list-table td:nth-child(7) {
+    width: 120px; 
+}
+.queue-list-table th:nth-child(8), 
+.queue-list-table td:nth-child(8) {
+    width: 90px; 
+}
+.queue-list-table th:nth-child(4), 
+.queue-list-table td:nth-child(4) {
+    width: 200px; 
+}
+.queue-list-table th:nth-child(3), 
+.queue-list-table td:nth-child(3) {
+    width: 150px; 
+}
+.queue-list-table th:nth-child(1), 
+.queue-list-table td:nth-child(1) {
+    width: 300px;
+}
+
+.queue-list-table textarea {
+  width: 100%; 
+  box-sizing: border-box; 
+  resize: none; 
+}
+.queue-list-table input[type="text"] {
+  width: 100%; 
+  box-sizing: border-box; 
+}
+  .queue-list-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; 
+  }
+  
+
+  .queue-list-container p {
+    color: red; 
+    font-weight: bold; 
+  }
+  
+ 
+  .queue-list-table .action-buttons {
+    display: flex; 
+    gap: 5px; 
+  }
+  
+ 
+  .queue-list-table .action-buttons button {
+    padding: 8px 12px; 
+    border: none; 
+    border-radius: 4px; 
+    background-color: #3a3768;
+    color: white; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+  }
+  
+  
+  .queue-list-table .action-buttons button:hover {
+    background-color: #0056b3; 
+  }
+  
+  
+  @media (max-width: 768px) {
+    .queue-list-table {
+      display: block; 
+      overflow-x: auto; 
+    }
+    
+    .queue-list-table th, .queue-list-table td {
+      display: block; 
+      text-align: right; 
+    }
+  
+    .queue-list-table th {
+      text-align: left; 
+    }
+  
+    .queue-list-table .action-buttons {
+      justify-content: space-between; 
+    }
+  }
+
+  .pagination-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination-controls button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px; 
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .pagination-controls button:disabled {
+    background-color: #3a3768;
+    cursor: not-allowed;
+  }

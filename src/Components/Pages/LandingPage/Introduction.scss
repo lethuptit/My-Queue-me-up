@@ -1,0 +1,129 @@
+@import '../../common.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.oswald-slogan{
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.introduction {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    padding: 20px 0 20px 0;
+    display: flex;
+    align-items: center;
+    background: url('../../../../public/images/hero-bg.png') top center no-repeat;
+    background-size: cover;
+    
+    // border: 1px solid red;
+  }
+  
+  .introduction h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 40px;
+    color: $primary-color-dark;
+    margin-bottom: 30px;
+  }
+  
+  .introduction h6 {
+    color: $secondary-color-dark;
+    margin: 30px 0 30px 0;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 36px;
+    font-family:'Oswald';
+  }
+  
+  .introduction .btn-get-started {
+    color: white;
+    background: $primary-color-dark;
+    // font-family: $header-font;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 40px;
+    border-radius: 50px;
+    transition: 0.5s;
+    box-shadow: 0px 8px 28px rgba(16, 6, 29, 0.1);
+    margin-left: 5px;
+    font-size: 18px;
+    transition: 0.3s;
+  }
+  
+  .introduction .btn-get-started:hover {
+    color: $primary-color-dark;
+    background: $primary-color-light;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
+    // transform: translateX(5px);
+  }
+  
+  
+  .introduction .btn-watch-video {
+    font-size: 16px;
+    transition: 0.5s;
+    color: $primary-color-dark;
+    font-weight: 600;
+  }
+  
+  .introduction .btn-watch-video i {
+    color: $primary-color-dark;
+    font-size: 32px;
+    transition: 0.3s;
+    line-height: 0;
+    margin-right: 8px;
+  }
+  
+  .introduction .btn-watch-video:hover {
+    // color: $primary-color-light;
+    // background-color: $primary-color-dark;
+    transform: scale(1.1);
+  }
+  
+  .introduction .btn-watch-video:hover i {
+    color: color-mix(in srgb, $primary-color-dark, transparent 15%);
+  }
+  
+  .introduction .animated {
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+  }
+
+  .introduction .hero-img{
+    display: flex;
+    justify-content: center;
+    padding: 0 auto;
+  }
+  
+  @media (max-width: 640px) {
+    .introduction h1 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  
+    .introduction p {
+      font-size: 18px;
+      line-height: 24px;
+      margin-bottom: 30px;
+    }
+  }
+  
+  @keyframes up-down {
+    0% {
+      transform: translateY(20px);
+    }
+  
+    100% {
+      transform: translateY(-20px);
+    }
+  }

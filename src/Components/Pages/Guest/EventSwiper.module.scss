@@ -1,0 +1,56 @@
+@import '../../common.scss';
+
+section {
+  // padding: 20px 0;
+  overflow: clip;
+}
+
+.section-title {
+  text-align: center;
+  padding: 30px 0px;
+  position: relative;
+
+  & h2 {
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 8px 40px;
+    margin: 0;
+    background: $secondary-color-light;
+    color: white;
+    display: inline-block;
+    text-transform: uppercase;
+    border-radius: 50% 20% / 10% 40%;
+    font-family: $header-font;
+  }
+}
+
+.swiper-container {
+  margin: 20px 0;
+  width: 930px;
+  height: 250px;
+}
+
+.swiper-slide {
+  /* height: 100%;  */
+  background-position: center;
+  background-size: contain;
+  width: 200;
+  // height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h4 {
+    color: $primary-color-dark;
+    font-style: italic;
+    font-family: $header-font;
+    font-size: 18px;
+  }
+
+}
+
+.swiper-slide img {
+  width: 300px;
+  height: 210px;
+}

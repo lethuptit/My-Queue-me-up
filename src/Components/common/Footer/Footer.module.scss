@@ -1,115 +1,104 @@
 @import '../../common.scss';
-@import '~bootstrap/scss/bootstrap';
-
-
-$accent-color: #4154f1; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-$contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-
-*{
-  // border: 1px solid red;
-}
+// @import '~bootstrap/scss/bootstrap';
 
 .footer {
   @include text-color();
-  // color: var(--default-color);
-  // background-color: $background-color;
-  // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 600 1000'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M0,224L80,192C160,160,320,96,480,101.3C640,107,800,181,960,181.3C1120,181,1280,107,1360,69.3L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  // border: 1px solid red;
+  background-color: $primary-color-light;
   background-size: cover;
+  background-repeat: no-repeat;
   font-size: 14px;
-  padding: 10px;
+  padding: 30px 30px 0px;
   position: relative;
-  margin: 0px 30px;
-    
-  & .social-links>a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
-    background-color: color-mix(in srgb, $accent-color, transparent 97%);
-    border: 1px solid color-mix(in srgb, v$accent-color, transparent 85%);
-    font-size: 26px;
-    color: $accent-color;
-    margin-right: 10px;
-    transition: 0.3s;
+  margin-top: 2rem;
 
-    &>i{
-      padding:0 10px;
+  & .social-links {
+    // border: 1px solid red;
+    padding-left: 0;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      // background-color: color-mix(in srgb, $accent-color, transparent 97%);
+      border: 1px solid color-mix(in srgb, $accent-color, transparent 65%);
+      font-size: 26px;
+      color: $accent-color;
+      margin-right: 5px;
+      transition: 0.3s;
+
+      &:hover {
+        color: white;
+        background-color: $accent-color;
+      }
     }
   }
-  
-  & .social-links a:hover {
-    color: $contrast-color;
-    background-color: $accent-color;
-  }
-  
+
   & h4 {
     font-size: 16px;
     font-weight: bold;
     position: relative;
     padding-bottom: 12px;
   }
-  
+
   & .footer-links {
     margin-bottom: 30px;
   }
-  
+
   & .footer-links ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  
+
   & .footer-links ul i {
     margin-right: 3px;
     font-size: 12px;
     line-height: 0;
     color: $accent-color;
   }
-  
+
   & .footer-links ul li {
     padding: 10px 0;
     display: flex;
     align-items: center;
   }
-  
+
   & .footer-links ul li:first-child {
     padding-top: 0;
   }
-  
+
   & .footer-links ul a {
     display: inline-block;
     color: color-mix(in srgb, &default-color, transparent 20%);
     line-height: 1;
   }
-  
+
   & .footer-links ul a:hover {
     color: $accent-color;
   }
-  
-  & .footer-about a {
-    color: $heading-color;
-    font-size: 24px;
-    font-weight: 600;
-    font-family: $heading-font;
+
+  & .footer-about .sitename {
+    color: $primary-color-dark;
+    font-size: 28px;
+    font-weight: 400;
+    font-family: $logo-font;
   }
-  
+
   & .footer-contact p {
     margin-bottom: 5px;
   }
-  
-  & .copyright{
+
+  & .copyright {
+    @include center-vertically;
     padding-top: 25px;
-    padding-bottom: 5px;
-    border-top: 1px solid color-mix(in srgb, $default-color, transparent 90%);
-    // border-top: 10px solid black;
+    border-top: 1px solid rbg($primary-color-dark, transparent 10%);
   }
-  
+
   & .copyright p {
+    @include center-vertically;
     margin-bottom: 0;
-  }  
+  }
 }
-
-
-

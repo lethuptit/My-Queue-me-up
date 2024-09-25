@@ -1,0 +1,87 @@
+@import '../../common.scss';
+
+
+.user-page {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+ 
+  // border: 1px solid red;
+}  
+
+.main-content {
+   padding: 1rem 0;
+  width: 100%;
+  margin: auto;
+  padding-bottom: 5rem;
+  display: flex;  
+
+  & .queue-stats {
+    display: flex;
+    justify-content: center;
+    padding:0 auto;
+    // background-color: $primary-color-light;
+  }
+}
+
+.join-form-container{
+  padding: 20px 0;
+  border: 1px solid $primary-color-dark;
+  border-radius: 30px;
+  box-shadow: 5px 5px 5px $primary-color-dark;
+  min-width:320px;
+  max-width:600px;
+
+  // border: 1px solid red;
+}
+
+// BELOW CSS IS SHARED BETWEEN JOIN PAGE AND ADMIN PAGE'S ADD MANUALLY SECTION
+.message {
+  @include center-horizontally();
+}
+
+.info {
+  @include center-horizontally();
+  color: blue;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  position: relative;
+  z-index: 10;
+  & > div {
+    margin: 1rem;
+  }
+}
+
+.phone-only-container {
+  display: flex;
+  flex-direction: column;
+
+  .phone-input {
+    margin: 2rem 0;
+  }
+}
+
+// .notification {
+//   font-size: 16px;
+//   color: #28a745;
+// }
+
+// .turn-notification {
+//   padding: 20px;
+//   border: 2px solid #28a745;
+//   border-radius: 8px;
+//   background-color: #e6ffe6;
+//   margin-top: 20px;
+
+//   & h2 {
+//     margin: 0 0 10px;
+//     font-size: 24px;
+//     color: #28a745;
+//   }
+// }

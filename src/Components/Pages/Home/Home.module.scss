@@ -14,7 +14,7 @@
   .subtitle {
     @include center-horizontally();
     @include text-color();
-    font-weight: 800;
+    font-weight: 800; 
     margin: 1rem;
     font-size: x-large;
   }
@@ -187,25 +187,7 @@
   display: flex;
 }
 
-.my-queue {
-  @include text-color();
-  @include center-horizontally();
-  flex-direction: column;
-  .my-queue-item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 18rem;
-    border-bottom: 0.1rem solid;
-    border-top: 0.1rem solid;
-    padding: 0.25rem 1rem;
 
-    &:hover {
-      background-color: #f9f9f9;
-    }
-  }
-}
 
 .price-card {
   display: flex;

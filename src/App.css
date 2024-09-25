@@ -1,37 +1,111 @@
-/* src/App.css */
-
+/* App container */
 .app-container {
-  max-width: 80%;
-  margin: 0 auto;
+  min-height: 60vh;
+  padding-top: 75px; /* Adjust this value to match your header height */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Main content for non-dashboard pages */
+.main-content {
+  flex-grow: 1;
+  overflow-y: auto;
   padding: 20px;
-  text-align: center;
+  /* border: 1px solid red; */
 }
 
-.host-button,
-.submit-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin: 10px;
+/* Dashboard container */
+.dashboard-layout {
+  display: flex;
+  min-height: calc(100vh - 60px); /* Subtract header height */
+  margin: 0;
 }
 
-.host-button:hover,
-.submit-button:hover {
-  background-color: #0056b3;
+/* Dashboard content */
+.dashboard-routes {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  margin: 0;
 }
 
-.password-form {
-  margin-top: 20px;
+/* Base Sidebar Styling */
+.sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  height: 100%;
+  position: sticky;
+  top: 60px; /* Adjust this value to match your header height */
+  padding-top: 20px;
+  overflow-y: auto;
 }
 
-.password-input {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
+.sidebar .nav-link {
+  color: #333;
+  padding: 10px 15px;
+}
+
+.sidebar .nav-link.active {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -210px;
+    top: 60px;
+    bottom: 0;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .sidebar-toggle {
+    display: block;
+    position: fixed;
+    top: 75px; /* Adjust this value to position it below the header */
+    left: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 901; /* Above sidebar */
+  }
+
+  .dashboard-routes {
+    margin-left: 0;
+  }
+}
+
+/* Hide toggle button on larger screens */
+@media (min-width: 769px) {
+  .sidebar-toggle {
+    display: none;
+  }
+
+  .dashboard-content {
+    margin-left: 250px; /* Adjust to match sidebar width */
+  }
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+/* Ensure the sidebar is above the overlay */
+.sidebar {
+  z-index: 900;
 }

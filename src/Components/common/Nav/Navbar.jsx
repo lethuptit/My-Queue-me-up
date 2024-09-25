@@ -1,63 +1,81 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import styles from './Nav.module.scss';
+import {LoginButton} from '../Button';
+import { Button } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from 'react-bootstrap/Stack';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Logo from '../ClickableLogo';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-// import { smoothScrollTo, smoothScrollToHomePageTop, onLoadById } from '../../../utils/scrollingOperations';
-// import { useNavigate } from 'react-router';
-// import { ReactTypeformEmbed } from 'react-typeform-embed';
+import { auth } from '../../../FirebaseConfig';
 
-import { Avatar, Button } from '@material-ui/core';
-import Stack from 'react-bootstrap/Stack';
-import SvgIcon from '@mui/material/SvgIcon';
-import SendIcon from '@mui/icons-material/Send';
-import './Navbar.css';
-import LoginButton from '../LoginButton';
+function NavMenu() {
 
-function HomeIcon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
-  );
+    const [user, setUser] = useState(null)
+    const [hostId, setHostId] = useState(localStorage.getItem('hostId'))
+
+    const getActiveItemClass = (value) => {
+        // if (value === selectedValue) {
+        //     return styles['active'];
+        // }
+        return '';
+    };
+
+    const handleClick = (e) => {
+        //setSelectedValue(e.target.tetx);
+    }
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (user) {
+                try {
+                    setHostId(user.email);
+                    setUser(user);
+                    localStorage.setItem('hostId', user.email)
+                } catch (error) {
+                    console.error("Error getting user email", error);
+                }
+            } else {
+                setHostId(null);
+                setUser(null);
+                localStorage.removeItem('hostId')
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    return (
+        <Navbar collapseOnSelect expand="lg" className={styles["navmenu"]}>
+            <Container>
+                <Navbar.Brand href="/" >
+                    <div className={styles["logo"]}>
+                        <img src="/images/main-logo.png" alt="Queue Logo" />
+                        <h6 >Queue Me Up</h6>
+                    </div>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav" className={'ms-5 '}>
+                    <Nav className="me-auto justify-content-end flex-grow-1">
+                        <Nav.Link href="/#introduction" className={`${styles["navmenu-item"]}`} >Introduction</Nav.Link>                        
+                        <Nav.Link href="/#about-team" value="team" className={`${styles["navmenu-item"]}`}>Team</Nav.Link>
+                        <Nav.Link href="/#contact"   className={`${styles["navmenu-item"]} `}>Contact</Nav.Link>
+                    </Nav>
+                    <Nav className={'ps-2 '}>
+                        <Stack direction="horizontal" gap={3} className={styles['btn-stack']}>
+                            {!hostId && < Link to='/join'>
+                                <Button className={styles['guest-btn']} variant="contained" endIcon={<SendIcon />}>
+                                    Guest
+                                </Button>
+                            </Link>}
+                            <LoginButton user={user} />
+                        </Stack>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar >
+    );
 }
 
-const NavBar = () => {
-  return (
-    <Container fluid='true' id="header" className={`header align-items-center fixed-top `}>
-      {/* <Logo/> */}
-      <Navbar expand="lg" className="bg-body-tertiary" id='nav-bar'>       
-        <Logo/> 
-        {/* <Container> */}
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#about-section">About</Nav.Link>              
-              <Nav.Link href="#link">Features</Nav.Link>
-              <Nav.Link href="#">Team123</Nav.Link>
-              <Nav.Link href="#link">Contact</Nav.Link>
-              <Stack direction="horizontal" gap={2} id='btn-stack'>
-                <Link to="/login">
-                  <LoginButton />
-                </Link>
-                <Link to='/guest'>
-                  <Button variant="contained" endIcon={<SendIcon />}>
-                    Guest
-                  </Button>
-                </Link>
-              </Stack>
-            </Nav>
-          </Navbar.Collapse>
-        {/* </Container> */}
-      </Navbar>
-    </Container>
-
-
-  );
-};
-
-export default NavBar;
+export default NavMenu;

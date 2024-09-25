@@ -2,22 +2,19 @@ import React from 'react';
 import styles from './Button.module.scss';
 
 const StandardButton = (props) => {
-  const { onClick, disabled } = props;
+  const { onClick, disabled, type="button" } = props;
+  const outlined = props.outlined;
   return (
     <button
-      type="submit"
+      type={type}
       onClick={onClick}
       disabled={disabled}
-      className={props.outlined ? styles['standard-button-outlined'] : styles['standard-button']}
+      className={outlined ? styles['standard-button-outlined'] : styles['standard-button']}
     >
-      {props.icon ? <div className={styles['icon']}>{props.icon}</div> : null}
       <div className={styles['text']}>{props.children}</div>
+      {props.icon ? <div className={styles['icon']}>{props.icon}</div> : null}
     </button>
-  );
-};
-
-StandardButton.defaultProps = {
-  disabled: false,
+  );  
 };
 
 export default StandardButton;

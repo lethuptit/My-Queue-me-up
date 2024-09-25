@@ -1,0 +1,17 @@
+.custom-datepicker span {
+    margin-right: 10px; 
+  }
+  
+  .custom-datepicker .date-picker-input {
+    margin-right: 10px; 
+  }
+  
+  .custom-datepicker .apply-filter-btn {
+    margin-left: 10px;
+    border-radius: 3px; 
+  }
+
+  .custom-datepicker .apply-filter-btn:hover {
+    background-color: #b2aad8; 
+    color: white; 
+  }

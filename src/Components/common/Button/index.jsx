@@ -1,3 +1,5 @@
 import StandardButton from './StandardButton';
+import LoginButton from './LoginButton';
 
-export default StandardButton;
+export  {StandardButton, LoginButton};
+

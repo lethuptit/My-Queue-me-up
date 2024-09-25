@@ -1,0 +1,45 @@
+@import '../../common.scss';
+
+.header-bar {
+//   border: 1px solid red;
+  @include background-color();
+  padding: 1rem 1rem;
+  display: flex;  
+  // flex-grow: 1;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+
+  .header-title {
+    @include standard-header();
+    @include center-horizontally();
+    word-break: break-word;
+    flex-direction: column;
+  }
+
+  .header-subtitle {
+    @include center-horizontally();
+    margin-top: 0rem;
+    font-family: Pacifico, Arial, Helvetica, sans-serif;
+    font-size: 0.5rem;
+    font-style: italic;
+    color: #3a3768;
+    }
+
+  .main-button-group {
+    @include center-horizontally();
+    margin-right: 0;
+    & > div {
+      margin: 0.1rem;
+    }
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+      margin: 0 auto;
+    }
+
+    .admin-button {
+      padding: 0 0.1rem;
+    }
+  }
+
+}

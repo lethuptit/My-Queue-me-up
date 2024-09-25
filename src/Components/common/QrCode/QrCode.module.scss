@@ -1,0 +1,23 @@
+@import '../../common.scss';
+
+.scan-window {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 300px;
+  border: 2px solid $primary-color-dark;
+}
+
+.qrscan-panel {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+
+.errorMessage{
+  display: flex;
+  color: red;
+  align-content: center;
+  align-items: center;
+}
