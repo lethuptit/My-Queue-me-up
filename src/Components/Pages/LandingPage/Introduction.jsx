@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './Introduction.scss';
 import AppFeatures from './AppFeatures';
-
+import { NavLink } from 'react-router-dom';
 
 const Typewriter = ({ text, delay, infinite }) => {
   const [currentText, setCurrentText] = useState('');
@@ -39,7 +39,13 @@ function Introduction() {
             <h1 data-aos="fade-up" >Queue Me Up - A virtual queue management system.</h1>
             <h6 className={"d-none d-lg-block"} data-aos="fade-up" data-aos-delay="100"><Typewriter text={subtitle} delay={100} infinite /></h6>
             <div className={"d-flex flex-column flex-md-row"} data-aos="fade-up" data-aos-delay="200">
-              <a href="/join" role ='button' className={"btn-get-started"}>Get Started<i className={"ps-2 bi bi-arrow-right"}></i></a>
+              <NavLink
+                to='/join'
+                className={"btn-get-started"}
+              >
+                Get Started<i className={"ps-2 bi bi-arrow-right"}></i>
+              </NavLink>
+              {/* <a href="/join" role='button' className={"btn-get-started"}>Get Started<i className={"ps-2 bi bi-arrow-right"}></i></a> */}
               <a href="https://youtu.be/6dgA_GBno20" target="_blank" className={"glightbox btn-watch-video d-flex align-items-center justify-content-center ms-0 ms-md-4 mt-4 mt-md-0"}>
                 <i className={"bi bi-play-circle"}></i><span>Watch Video</span></a>
             </div>
