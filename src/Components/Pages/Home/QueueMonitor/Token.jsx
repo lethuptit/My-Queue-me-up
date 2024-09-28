@@ -157,7 +157,7 @@ function Token({ token, onNoShowUp, onCheckIn, onCancel, onNotify }) {
     <>
       <section className={styles.token}>
         <div className={`${styles['token-position']}`}>
-          <p>{token.position}</p>
+          <p className={'text-center'}>{token.position}</p>
         </div>
         <div className={styles['token-number']}>
           <p>{formatTokenNumber(token.number)}</p>

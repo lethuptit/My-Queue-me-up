@@ -10,17 +10,18 @@
   // border: 1px solid red;
 
   .main-body {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 1rem 0px;
+    // width: 100%;
+    // display: flex;
+    // justify-content: center;
+    // margin: 1rem auto;
 
-    @media screen and (max-width: 550px) {
-      margin: 1rem 1rem;
-      // background-color: aquamarine;
-    }
+    // @media screen and (max-width: 550px) {
+    //   // margin: 1rem auto;
+    //   // background-color: aquamarine;
+    // }
 
     .side-admin-panel {
+      // max-width: 450px;
       overflow: auto;
     }
 

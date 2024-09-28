@@ -210,15 +210,15 @@ const QueueMonitorView = (props) => {
       if(guestToken.notifyTokenId)
         pushNotification(guestToken.notifyTokenId);
       sendSMSNotification(queueInfo.name, guestToken.phone, guestToken.name)
-      sendEmail({
-        queueId:guestToken.queueId, 
-        fromEmail:'queuemeupteam@gmail.com',
-        fromName: "Queue Me Up",
-        toName: guestToken.name,
-        toEmail:guestToken.email, 
-        subject: 'Queue Me Up - Your turn is up',
-        message:`\nYour turn is up.\nPlease check in with a volunteer.\nThank you.\n`
-      })        
+      // sendEmail({
+      //   queueId:guestToken.queueId, 
+      //   fromEmail:'queuemeupteam@gmail.com',
+      //   fromName: "Queue Me Up",
+      //   toName: guestToken.name,
+      //   toEmail:guestToken.email, 
+      //   subject: 'Queue Me Up - Your turn is up',
+      //   message:`\nYour turn is up.\nPlease check in with a volunteer.\nThank you.\n`
+      // })        
     }
     catch (error) {
       console.log("\tError in sending notification: ", error.message)
@@ -264,20 +264,20 @@ const QueueMonitorView = (props) => {
       
       {/* <Container > */}
       {queueInfo && (
-        <Row className={`${styles['main-body']}`}>
-          <Col md={5} xs={8} className={` ${styles['side-admin-panel']}`}>
+        <div className={`row justify-content-around mt-2`}>
+          <div className={`col col-xl-4 col-md-5 col-xs-8 ${styles['side-admin-panel']}`}>
             <SidePanel
               queueInfo={queueInfo}
               onAddGuest={handleAddGuest}
             />
-          </Col>
-          <Col md={7} xs={10} className={` ${styles['token-list-contaner']}`}>
+          </div>
+          <div className={`col col-xl-6 col-md-7 col-xs-10 ${styles['token-list-contaner']}`}>
             <div>
               {servingNumber && <div className={styles['serving-numer']}>
                 <Ribbon className={styles['serving-numer']} title="Serving" subTitle={`Number ${servingNumber}`} />
                 {/* <h5>Number {servingNumber} </h5> */}
               </div>}
-              <h3>Waiting List</h3>
+              <h4 className={'text-center'}>Waiting List</h4>
               {/* <ul> */}
               <div className={styles['token-list']} />
               {tokens.length === 0 ? (<EmptyList />)
@@ -302,8 +302,8 @@ const QueueMonitorView = (props) => {
               </div>
             )} */}
             {/* </Loading> */}
-          </Col>
-        </Row>)
+          </div>
+        </div>)
       }
     </div >
   )
