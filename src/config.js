@@ -1,1 +1,0 @@
-export const baseURL = "https://devbackend.simplq.me/v1"

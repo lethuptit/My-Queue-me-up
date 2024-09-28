@@ -8,7 +8,7 @@ function Toast({ title, subTitle, children }) {
   if (!open) {
     return null;
   }
-  
+
   return (
     <div className={styles['ribbon-warning']}>
       <div className={styles['ribbon-container']}>
@@ -29,7 +29,6 @@ function Toast({ title, subTitle, children }) {
               setOpen(false);
             }}
           />
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
       </div>
     </div>
