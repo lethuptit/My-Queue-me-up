@@ -210,15 +210,15 @@ const QueueMonitorView = (props) => {
       if(guestToken.notifyTokenId)
         pushNotification(guestToken.notifyTokenId);
       sendSMSNotification(queueInfo.name, guestToken.phone, guestToken.name)
-      // sendEmail({
-      //   queueId:guestToken.queueId, 
-      //   fromEmail:'queuemeupteam@gmail.com',
-      //   fromName: "Queue Me Up",
-      //   toName: guestToken.name,
-      //   toEmail:guestToken.email, 
-      //   subject: 'Queue Me Up - Your turn is up',
-      //   message:`\nYour turn is up.\nPlease check in with a volunteer.\nThank you.\n`
-      // })        
+      sendEmail({
+        queueId:guestToken.queueId, 
+        fromEmail:'queuemeupteam@gmail.com',
+        fromName: "Queue Me Up",
+        toName: guestToken.name,
+        toEmail:guestToken.email, 
+        subject: 'Queue Me Up - Your turn is up',
+        message:`\nYour turn is up.\nPlease check in with a volunteer.\nThank you.\n`
+      })        
     }
     catch (error) {
       console.log("\tError in sending notification: ", error.message)

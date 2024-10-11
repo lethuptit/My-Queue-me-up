@@ -1,9 +1,9 @@
 import axios from 'axios';
 import emailjs from 'emailjs-com';
 
-const remoteUrl = 'https://my-node-server.netlify.app/.netlify/functions/api'
+const remoteUrl = 'https://node-server-1.netlify.app/.netlify/functions/api'
 const baseURL = process.env.REACT_APP_SERVER_URL||remoteUrl;
-
+//const baseURL = 'http://localhost:5000';
 export async function pushNotification(mesTokenId, title, body) {
   try {
     if (!mesTokenId || typeof mesTokenId !== 'string') {
